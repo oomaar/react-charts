@@ -1,7 +1,14 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Login } from "./Pages";
+
 export const App = () => {
   return (
     <div>
-      <h1>React Charts</h1>
+      <Router basename="/">
+        <Routes>
+          <Route exact path={`/`} element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 };
