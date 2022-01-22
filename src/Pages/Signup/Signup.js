@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { FaFacebookF, FaGoogle, FaTwitter, FaGithub } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +16,9 @@ import {
     IconsTitle,
     IconsContainer,
     Icon,
-} from "./styledLogin";
+} from "../Login/styledLogin";
 
-export const Login = ({ title, subTitle }) => {
+export const Signup = ({ title, subTitle }) => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
     const [error, setError] = useState("");
@@ -26,15 +26,15 @@ export const Login = ({ title, subTitle }) => {
 
     const isInvalid = passwordRef === '' || emailRef === '';
 
-    const handleSignin = async e => {
+    const handleSignUp = async e => {
         e.preventDefault();
+
         try {
             const loginEmail = emailRef.current.value;
             const loginPassword = passwordRef.current.value;
 
-            const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            const userCredential = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
             console.log("🚀 ~ file: Login.js ~ line 44 ~ Login ~ userCredential", userCredential);
-
             navigate("/landing");
         } catch (err) {
             setError(err);
@@ -84,7 +84,7 @@ export const Login = ({ title, subTitle }) => {
 
                 <ButtonsContainer>
                     <ButtonsSubContainer>
-                        <Button type="submit" disabled={isInvalid} onClick={e => handleSignin(e)}>{title}</Button>
+                        <Button type="submit" disabled={isInvalid} onClick={e => handleSignUp(e)}>{title}</Button>
                     </ButtonsSubContainer>
                     <ButtonsSubContainer>
                         <Button jwt type="button">{title} With JWT</Button>
@@ -92,7 +92,7 @@ export const Login = ({ title, subTitle }) => {
                     </ButtonsSubContainer>
                 </ButtonsContainer>
 
-                <IconsTitle><a href="/signup">Signup</a>Or Login With</IconsTitle>
+                <IconsTitle>Have an account?<a href="/">Login</a></IconsTitle>
 
                 <IconsContainer>
                     <Icon fb><FaFacebookF /></Icon>

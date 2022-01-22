@@ -21,6 +21,7 @@ export const LoginHeader = styled.div`
   h4 {
     font-size: 1.5rem;
     margin: 1rem 0;
+    text-transform: uppercase;
   }
 
   h6 {
@@ -103,6 +104,14 @@ export const Button = styled.button`
 
 export const IconsTitle = styled.p`
   text-align: center;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #0a84ca;
+    margin: 0 0.5rem;
+    letter-spacing: 0.1rem;
+  }
 
   ::before {
     content: "";
