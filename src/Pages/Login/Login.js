@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { FaFacebookF, FaGoogle, FaTwitter, FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { setUserSession } from "../../Utils";
 import {
     Container,
@@ -20,6 +21,7 @@ import {
 export const Login = (props) => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const validateForm = () => {
         return userName.length > 0 && password.length > 0;
@@ -45,7 +47,7 @@ export const Login = (props) => {
                 setUserSession(response.data.token, userInfo);
                 localStorage.setItem("user-info", JSON.stringify(response.data));
                 console.log(response.data);
-                props.history.push(`${process.env.PUBLIC_URL}/landing`);
+                navigate(`/landing`);
             })
             .catch(error => {
                 console.log(error);
