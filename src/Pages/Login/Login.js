@@ -58,7 +58,7 @@ export const Login = (props) => {
     return (
         <Container>
             <LogoContainer>
-                <img src="/images/logo2.png" width={300} style={{ 'borderRadius': '45px' }} alt="" />
+                <img src="/images/logo.png" width={300} style={{ 'borderRadius': '45px' }} alt="" />
             </LogoContainer>
 
             <LoginForm>
