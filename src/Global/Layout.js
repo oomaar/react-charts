@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GlobalStyle } from '.';
-import { Sidebar } from '../Components';
+import { Header, Sidebar } from '../Components';
 
 export const Layout = ({ children }) => {
     const [toggleSidebar, setToggleSidebar] = useState(true);
@@ -9,6 +9,7 @@ export const Layout = ({ children }) => {
     return (
         <div>
             <GlobalStyle />
+            <Header handleToggleSidebar={handleToggleSidebar} />
             <Sidebar toggleSidebar={toggleSidebar} />
             {children}
         </div>

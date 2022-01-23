@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Background = styled.div`
+  background: rgba(0, 0, 0 ,0.5);
+  width: 100%;
+`;
+
 export const Container = styled.div`
   display: ${({ toggleSidebar }) => toggleSidebar ? "flex" : "none"};
   transform: ${({ toggleSidebar }) => toggleSidebar ? "translateX(0)" : "translateX(-100vh)"};
