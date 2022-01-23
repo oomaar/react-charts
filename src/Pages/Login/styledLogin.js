@@ -33,7 +33,7 @@ export const LoginHeader = styled.div`
 
 export const LoginForm = styled.form`
   background-color: #fff;
-  height: 70%;
+  height: 100%;
   padding: 1.5rem;
   margin: 1.2rem 0;
   border-radius: 0.3rem;
