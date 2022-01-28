@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard",
+    "icon": "uil uil-estate",
+    "arrowIcon": "uil uil-angle-right-b"
+  },
+  {
+    "id": 2,
+    "title": "Social Media",
+    "icon": "uil uil-list-ul",
+    "arrowIcon": "uil uil-angle-right-b"
+  },
+  {
+    "id": 3,
+    "title": "Users",
+    "icon": "uil uil-users-alt",
+    "arrowIcon": "uil uil-angle-right-b"
+  },
+  {
+    "id": 4,
+    "title": "Calender",
+    "icon": "uil uil-calender",
+    "arrowIcon": "uil uil-angle-right-b"
+  },
+  {
+    "id": 5,
+    "title": "Tasks",
+    "icon": "uil uil-list-ul"
+  },
+  {
+    "id": 6,
+    "title": "FAQ",
+    "icon": "uil uil-question-circle"
+  },
+  {
+    "id": 7,
+    "title": "Maintenance",
+    "icon": "uil uil-setting"
+  }
+]
