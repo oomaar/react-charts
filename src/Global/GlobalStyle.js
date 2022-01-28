@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const transition = `all 0.5s ease-in`;
+
 export const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
@@ -13,5 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
   }
 `;
