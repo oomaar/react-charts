@@ -11,8 +11,12 @@ export const Container = styled.div`
   color: #fff;
   width: 260px;
   padding: 0 1rem 0 0;
-  transform: translateX(-100vh);
+  transform: ${({ toggleSidebar }) => toggleSidebar ? "translateX(0vh)" : "translateX(-100vh)"};
   transition: ${transition};
+
+  @media screen and (max-width: 320px) {
+    width: 100%;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -23,7 +27,7 @@ export const Overlay = styled.div`
   bottom: 0;
   z-index: 900;
   background-color: rgba(0, 0, 0, 0.5);
-  transform: translateX(400vh);
+  transform: ${({ toggleSidebar }) => toggleSidebar ? "translateX(0vh)" : "translateX(400vh)"};
   transition: ${transition};
 `;
 
@@ -32,6 +36,14 @@ export const TopContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 1rem 0 2rem;
+
+  i {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 `;
 
 export const LogoContainer = styled.div`

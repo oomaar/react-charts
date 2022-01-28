@@ -15,7 +15,7 @@ import {
 } from "./styledSidebar";
 
 
-export const Sidebar = () => {
+export const Sidebar = ({ toggleSidebar, setToggleSidebar }) => {
     const sidebarData = data.map(link => (
         <SidebarItem key={link.id}>
             <IconContainer>
@@ -27,9 +27,10 @@ export const Sidebar = () => {
 
     return (
         <>
-            <Overlay />
-            <Container>
+            <Overlay toggleSidebar={toggleSidebar} onClick={() => setToggleSidebar(false)} />
+            <Container toggleSidebar={toggleSidebar}>
                 <TopContainer>
+                    <i className="uil uil-times" onClick={() => setToggleSidebar(false)}></i>
                     <LogoContainer><img src="/images/logo.png" alt="Logo" /></LogoContainer>
                     <UserImage><img src="/images/user-sidebar.png" alt="User" /></UserImage>
                     <SidebarTitle>Username</SidebarTitle>
