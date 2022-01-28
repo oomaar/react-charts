@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
     return (
         <div>
             <GlobalStyle />
-            <Header setToggleSidebar={setToggleSidebar} />
+            <Header toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
             <Sidebar toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
             {children}
         </div>

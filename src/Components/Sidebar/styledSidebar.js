@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { transition } from '../../Global/GlobalStyle';
+import { SidebarWith, transition } from '../../Global/GlobalStyle';
 
 export const Container = styled.div`
   z-index: 1000;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   bottom: 0;
   background-color: #2f3c4e;
   color: #fff;
-  width: 260px;
+  width: ${SidebarWith};
   padding: 0 1rem 0 0;
   transform: ${({ toggleSidebar }) => toggleSidebar ? "translateX(0vh)" : "translateX(-100vh)"};
   transition: ${transition};
