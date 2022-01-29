@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+<<<<<<< HEAD
 import { SidebarWith, transition } from '../../Global/GlobalStyle';
 
 export const Container = styled.div`
@@ -121,3 +122,12 @@ export const UserAvatar = styled.div`
     }
   }
 `;
+=======
+
+export const Container = styled.div``;
+
+export const ToggleContainer = styled.div``;
+
+export const SearchContainer = styled.div``;
+
+>>>>>>> 457dff023a25407070c72af316cfc122588660f0

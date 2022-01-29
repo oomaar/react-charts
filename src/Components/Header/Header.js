@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from "react";
 import {
     Container,
@@ -47,4 +48,23 @@ export const Header = ({ toggleSidebar, setToggleSidebar }) => {
             </SubContainer>
         </Container>
     );
+=======
+import React from 'react';
+import { FiAlignLeft, FiSearch, FiBell, FiMessageCircle } from "react-icons/fi";
+import { BsFullscreen } from "react-icons/bs";
+import {
+    Container,
+} from "./styledHeader";
+
+export const Header = ({ handleToggleSidebar }) => {
+  return (
+    <Container>
+        <FiAlignLeft />
+        {/* Search */}
+        
+        {/* Icons */}
+        {/* Avatar */}
+    </Container>
+  );
+>>>>>>> 457dff023a25407070c72af316cfc122588660f0
 };
