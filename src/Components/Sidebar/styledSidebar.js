@@ -85,25 +85,44 @@ export const IconContainer = styled.div`
 export const ItemTitle = styled.p`
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 0;
+  position: relative;
   transition: ${transition};
+
+  i {
+    position: absolute;
+    right: 0;
+    transition: ${transition};
+    transform: ${({ toggleDropdown }) => toggleDropdown ? "rotate(90deg)" : "rotate(0deg)"};
+  }
 `;
 
 export const SidebarItem = styled.li`
   list-style: none;
-  display: flex;
-  align-items: center;
   cursor: pointer;
   margin: 0.6rem 0;
   transition: ${transition};
+  font-size: 0.9rem;
 
-  :hover ${IconContainer} {
-    transform: translateX(10px);
+  div {
+    display: flex;
+    align-items: center;
   }
+`;
 
-  :hover ${ItemTitle} {
-    transform: translateX(10px);
-  }
+export const SidebarDrop = styled.ul`
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  padding-left: 4rem;
+  overflow: hidden;
+  visibility: ${({ toggleDropdown }) => toggleDropdown ? "visible" : "hidden"};
+  opacity: ${({ toggleDropdown }) => toggleDropdown ? "1" : "0"};
+  height: ${({ toggleDropdown }) => toggleDropdown ? "auto" : "0"};
+  transition: ${transition};
+`;
+
+export const DropItem = styled.li`
+  list-style: disc;
+  transform: ${({ toggleDropdown }) => toggleDropdown ? "translateX(0)" : "translateX(-100vh)"};;
+  transition: ${transition};
 `;

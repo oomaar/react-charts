@@ -1,3 +1,4 @@
+import { useState } from "react";
 import data from "../../data/sidebarData.json";
 import {
   Container,
@@ -12,16 +13,39 @@ import {
   SidebarItem,
   IconContainer,
   ItemTitle,
+  SidebarDrop,
+  DropItem,
 } from "./styledSidebar";
 
 
 export const Sidebar = ({ toggleSidebar, setToggleSidebar }) => {
+  const [toggleDropdown, setToggleDropdown] = useState(0);
+
+  const handleToggleDropdown = index => {
+    if (toggleDropdown === index) {
+      return setToggleDropdown(null);
+    }
+
+    setToggleDropdown(index);
+  };
+
   const sidebarData = data.map(link => (
-    <SidebarItem key={link.id}>
-      <IconContainer>
-        <i className={link.icon}></i>
-      </IconContainer>
-      <ItemTitle>{link.title} {link.arrowIcon && <i className={link.arrowIcon}></i>}</ItemTitle>
+    <SidebarItem key={link.id} onClick={() => link.drop && handleToggleDropdown(link.id)}>
+      <div>
+        <IconContainer>
+          <i className={link.icon}></i>
+        </IconContainer>
+        <ItemTitle toggleDropdown={toggleDropdown === link.id && toggleDropdown}>
+          {link.title} {link.arrowIcon && <i className={link.arrowIcon}></i>}
+        </ItemTitle>
+      </div>
+      {(link.drop && toggleDropdown === link.id) ? link.links.map(lnk => (
+        <SidebarDrop key={lnk.id} toggleDropdown={toggleDropdown}>
+          <DropItem toggleDropdown={toggleDropdown}>
+            {lnk.title}
+          </DropItem>
+        </SidebarDrop>
+      )) : null}
     </SidebarItem>
   ));
 
