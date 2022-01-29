@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signOut } from 'firebase/auth';
+import { auth } from '../../lib/firebase';
 import {
     Container,
     SubContainer,
@@ -12,10 +15,18 @@ import {
     RightContainer,
     RightIconContainer,
     UserAvatar,
+    UserDropdown,
+    DropItem,
 } from "./styledHeader";
 
 export const Header = ({ toggleSidebar, setToggleSidebar }) => {
     const [toogleHeader, setToggleHeader] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        navigate("/");
+    };
 
     return (
         <Container toggleSidebar={toggleSidebar} toogleHeader={toogleHeader}>
@@ -46,6 +57,30 @@ export const Header = ({ toggleSidebar, setToggleSidebar }) => {
                     </RightIconContainer>
                     <UserAvatar>
                         <img src="/images/user-sidebar.png" alt="User" />
+                        <UserDropdown>
+                            <div>
+                                <DropItem>
+                                    <i className="uil uil-user"></i>
+                                    Edit Profile
+                                </DropItem>
+                                <DropItem>
+                                    <i className="uil uil-envelope"></i>
+                                    Inbox
+                                </DropItem>
+                                <DropItem>
+                                    <i className="uil uil-lock"></i>
+                                    Lock Screen
+                                </DropItem>
+                            </div>
+                            <DropItem>
+                                <i className="uil uil-setting"></i>
+                                Settings
+                            </DropItem>
+                            <DropItem onClick={handleLogout}>
+                                <i className="uil uil-signout"></i>
+                                Log out
+                            </DropItem>
+                        </UserDropdown>
                     </UserAvatar>
                 </RightContainer>
             </SubContainer>

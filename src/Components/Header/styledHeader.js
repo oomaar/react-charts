@@ -134,9 +134,47 @@ export const RightIconContainer = styled.div`
   cursor: pointer;
 `;
 
+export const UserDropdown = styled.ul`
+  position: absolute;
+  top: 60%;
+  right: 0;
+  padding: 0 1rem;
+  width: 160px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  transform: translateY(40px);
+  transition: ${transition};
+
+  div {
+    border-bottom: 1px solid #e0e0e0;
+  }
+`;
+
+export const DropItem = styled.li`
+  list-style: none;
+  display: flex;
+  font-size: 1rem;
+  margin: 0.7rem 0;
+  cursor: pointer;
+  transition: ${transition};
+  
+  i {
+    margin-right: 0.5rem;
+  }
+
+  :hover {
+    color: #4466f2;
+  }
+`;
+
 export const UserAvatar = styled.div`
   margin: 0 1rem;
   cursor: pointer;
+  position: relative;
   
   img {
     width: 60px;
@@ -144,5 +182,12 @@ export const UserAvatar = styled.div`
     @media screen and (max-width: 768px) {
       width: 50px;
     }
+  }
+
+  :hover > ${UserDropdown} {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transform: translateY(0px);
   }
 `;
