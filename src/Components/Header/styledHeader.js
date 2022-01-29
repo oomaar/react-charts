@@ -136,6 +136,7 @@ export const RightIconContainer = styled.div`
 `;
 
 export const UserDropdown = styled.ul`
+  background-color: #fff;
   position: absolute;
   top: 60%;
   right: 0;
