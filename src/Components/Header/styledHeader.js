@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-<<<<<<< HEAD
 import { SidebarWith, transition } from '../../Global/GlobalStyle';
 
 export const Container = styled.div`
@@ -14,6 +13,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 1rem 0;
     margin-left: 0;
+    padding: 0.5rem;
   }
 `;
 
@@ -42,10 +42,28 @@ export const SubBox = styled.div`
   }
 `;
 
+export const HeaderLogo = styled.div`
+  display: none;
+
+  img {
+    width: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    margin: 0 1rem;
+  }
+`;
+
 export const BurgerIconContainer = styled.div`
   font-size: 1.5rem;
   color: #4466f2;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const HeaderToggleIcon = styled.div`
@@ -63,16 +81,20 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: #f8f8f8;
-  width: 100%;
+  width: 50%;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
-  margin: 0 2rem;
+  margin: 0 auto;
   border: 1px solid #e0e0e0;
 
   @media screen and (max-width: 768px) {
     margin: 0 1rem;
     padding: 0.2rem 1rem;
     height: 50px;
+  }
+
+  @media screen and (max-width: 535px) {
+    width: 100%;
   }
 `;
 
@@ -106,13 +128,15 @@ export const RightIconContainer = styled.div`
   align-items: center;
   border-right: 1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #4466f2;
   padding: 0 1rem;
+  cursor: pointer;
 `;
 
 export const UserAvatar = styled.div`
   margin: 0 1rem;
+  cursor: pointer;
   
   img {
     width: 60px;
@@ -122,12 +146,3 @@ export const UserAvatar = styled.div`
     }
   }
 `;
-=======
-
-export const Container = styled.div``;
-
-export const ToggleContainer = styled.div``;
-
-export const SearchContainer = styled.div``;
-
->>>>>>> 457dff023a25407070c72af316cfc122588660f0

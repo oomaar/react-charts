@@ -16,10 +16,7 @@ export const Landing = () => {
 
     return (
         <Container>
-            <h1 style={{
-                fontSize: "100rem"
-
-            }} onClick={handleLogout}>Landing Page(Logout)</h1>
+            <h1 onClick={handleLogout}>Landing Page(Logout)</h1>
         </Container>
     );
 };

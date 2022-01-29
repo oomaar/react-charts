@@ -1,9 +1,9 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import {
     Container,
     SubContainer,
     SubBox,
+    HeaderLogo,
     BurgerIconContainer,
     HeaderToggleIcon,
     SearchContainer,
@@ -21,6 +21,9 @@ export const Header = ({ toggleSidebar, setToggleSidebar }) => {
         <Container toggleSidebar={toggleSidebar} toogleHeader={toogleHeader}>
             <SubBox>
                 <BurgerIconContainer onClick={() => setToggleSidebar(true)}>
+                    <HeaderLogo>
+                        <img src="/images/logo.png" alt="Logo" />
+                    </HeaderLogo>
                     <i className="uil uil-align-left"></i>
                 </BurgerIconContainer>
                 <HeaderToggleIcon onClick={() => setToggleHeader(state => !state)}>
@@ -48,23 +51,4 @@ export const Header = ({ toggleSidebar, setToggleSidebar }) => {
             </SubContainer>
         </Container>
     );
-=======
-import React from 'react';
-import { FiAlignLeft, FiSearch, FiBell, FiMessageCircle } from "react-icons/fi";
-import { BsFullscreen } from "react-icons/bs";
-import {
-    Container,
-} from "./styledHeader";
-
-export const Header = ({ handleToggleSidebar }) => {
-  return (
-    <Container>
-        <FiAlignLeft />
-        {/* Search */}
-        
-        {/* Icons */}
-        {/* Avatar */}
-    </Container>
-  );
->>>>>>> 457dff023a25407070c72af316cfc122588660f0
 };
