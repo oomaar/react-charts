@@ -3,6 +3,7 @@ import { SidebarWith, transition } from '../../Global/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
+  background-color: #fff;
   align-items: center;
   padding: 1rem;
   margin-left: ${({ toggleSidebar }) => toggleSidebar ? SidebarWith : "0"};
