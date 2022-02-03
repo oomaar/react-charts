@@ -8,6 +8,7 @@ export const Container = styled.div`
   padding: 1rem;
   margin-left: ${({ toggleSidebar }) => toggleSidebar ? SidebarWith : "0"};
   transition: ${transition};
+  position: relative;
   z-index: 800;
 
   @media screen and (max-width: 768px) {
