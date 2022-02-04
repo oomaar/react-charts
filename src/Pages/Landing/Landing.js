@@ -17,7 +17,7 @@ export const Landing = () => {
     useEffect(() => {
         const fetchData = async () => {
             const res = await axios.get(`https://my-json-server.typicode.com/WorexEG/json-server/appPerformance`);
-            setAppPerformance(res.data);
+            setAppPerformance(res.data.slice(0, 4));
         };
 
         fetchData();

@@ -33,10 +33,7 @@ export const ChartsContainer = styled.div`
 `;
 
 export const ChartCard = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 700px;
+  width: 500px;
   margin: 1rem auto;
   border-radius: 1rem;
   padding: 1rem;
@@ -44,7 +41,7 @@ export const ChartCard = styled.div`
   z-index: 1;
 
   @media screen and (max-width: 1024px) {
-    width: 600px;
+    width: 400px;
   }
 
   @media screen and (max-width: 768px) {
