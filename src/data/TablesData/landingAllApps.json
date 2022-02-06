@@ -1,0 +1,42 @@
+[
+  {
+    "applicationName": "Zendesk",
+    "successRate": "60%",
+    "failerRate": "40%"
+  },
+  {
+    "applicationName": "Oracle NetSuite",
+    "successRate": "90%",
+    "failerRate": "10%"
+  },
+  {
+    "applicationName": "Microsoft Dynamics",
+    "successRate": "80%",
+    "failerRate": "20%"
+  },
+  {
+    "applicationName": "Salesforce",
+    "successRate": "70%",
+    "failerRate": "30%"
+  },
+  {
+    "applicationName": "Microsoft Visual Studio",
+    "successRate": "53%",
+    "failerRate": "47%"
+  },
+  {
+    "applicationName": "Microsoft Outlook",
+    "successRate": "67%",
+    "failerRate": "33%"
+  },
+  {
+    "applicationName": "Teams Microsoft",
+    "successRate": "88%",
+    "failerRate": "12%"
+  },
+  {
+    "applicationName": "Zoom",
+    "successRate": "78%",
+    "failerRate": "22%"
+  }
+]
