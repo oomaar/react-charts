@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactHighcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
+import { Table } from '../../Components';
+import allAppsTableData from "../../data/TablesData/landingAllApps.json";
+import devicesTableData from "../../data/TablesData/landingDevicesData.json";
 import {
     Container,
     TopContainer,
     ChartsTitle,
     ChartsContainer,
     ChartCard,
+    Filters,
+    FilterButton,
+    SubFilters,
+    FiltersContainer,
 } from "./styledLanding";
-import { Table } from '../../Components';
 
 export const Landing = () => {
     const [appPerformance, setAppPerformance] = useState([]);
@@ -94,66 +100,42 @@ export const Landing = () => {
             accessor: 'applicationName'
         },
         {
-            Header: 'device UserName',
+            Header: 'Username',
             accessor: 'deviceUserName'
-        },
-        {
-            Header: 'Time',
-            accessor: 'Time'
         },
         {
             Header: 'Date',
             accessor: 'Date'
+        },
+        {
+            Header: 'Time',
+            accessor: 'Time'
         }
     ];
-
-    const devicesTableData = [
-        {
-            applicationName: 'Zendesk',
-            deviceUserName: 'Hassan',
-            Time: '5pm',
-            Date: '1/23/2022'
-        },
-        {
-            applicationName: 'Oracle NetSuite',
-            deviceUserName: 'Ramzy',
-            Time: '2am',
-            Date: '1/22/2022'
-        },
-        {
-            applicationName: 'Microsoft Dynamics',
-            deviceUserName: 'Omar',
-            Time: '4pm',
-            Date: '1/20/2022'
-        },
-        {
-            applicationName: 'Salesforce',
-            deviceUserName: 'Ramzy',
-            Time: '11pm',
-            Date: '1/19/2022'
-        },
-        {
-            applicationName: 'Zendesk',
-            deviceUserName: 'Omar',
-            Time: '7pm',
-            Date: '1/5/2022'
-        }
-    ]
 
     return (
         <Container>
             <TopContainer>
-                <ChartsTitle>Application Performance</ChartsTitle>
+                <FiltersContainer>
+                    <ChartsTitle>Application Performance</ChartsTitle>
+                    <Filters>
+                        <FilterButton>Today</FilterButton>
+                        <SubFilters>
+                            <FilterButton subButton>Last Day</FilterButton>
+                            <FilterButton subButton>Last Week</FilterButton>
+                            <FilterButton subButton>Last Month</FilterButton>
+                        </SubFilters>
+                    </Filters>
+                </FiltersContainer>
                 <ChartsContainer>
                     {appPerformanceCharts}
                 </ChartsContainer>
             </TopContainer>
             <Table
                 cols={allAppsColumns}
-                title="All Applications"
-                url="https://my-json-server.typicode.com/WorexEG/json-server/appPerformance"
+                title="All The Applications"
+                data={allAppsTableData}
             />
-
             <Table
                 cols={devicesColumns}
                 title="Devices"

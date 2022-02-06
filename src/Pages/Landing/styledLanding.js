@@ -19,8 +19,38 @@ export const TopContainer = styled.div`
 `;
 
 export const ChartsTitle = styled.p`
-  border-bottom: 1px solid #f5f5f5;
   padding: 0 1rem 1rem;
+`;
+
+export const FiltersContainer = styled.div`
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Filters = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+`;
+
+export const FilterButton = styled.button`
+  background-color: ${({ subButton }) => subButton ? "#4169e1" : "#00008b"};
+  font-size: 1rem;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+`;
+
+export const SubFilters = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.8rem 0;
 `;
 
 export const ChartsContainer = styled.div`
