@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
-import { Landing, Login, Signup } from "./Pages";
-import { PrivateRoute } from "./helpers/routes";
-import { Layout } from "./Global";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 import React from "react";
 
 export const App = () => {
@@ -9,11 +11,16 @@ export const App = () => {
     <div>
       <Router basename="/">
         <Routes>
-          <Route exact path="/" element={<Login title="Login" subTitle="Enter your email and password" />} />
-          <Route exact path="/signup" element={<Signup title="Signup" subTitle="Create account" />} />
-          <Route element={<PrivateRoute />}>
-            <Route element={<Layout><Outlet /></Layout>}>
-              <Route exact path={`/landing`} element={<Landing />} />
+          <Route exact path="/" element={<p>Login</p>} />
+          <Route element={<>Private Route</>}>
+            <Route
+              element={
+                <div>
+                  <Outlet />
+                </div>
+              }
+            >
+              <Route exact path={`/landing`} element={<p>Landing</p>} />
             </Route>
           </Route>
         </Routes>
