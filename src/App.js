@@ -6,10 +6,12 @@ import {
 } from "react-router-dom";
 import React from "react";
 import { Login } from "./Screens";
+import { GlobalStyle } from "./Global/GlobalStyle";
 
 export const App = () => {
   return (
     <div>
+      <GlobalStyle />
       <Router basename="/">
         <Routes>
           <Route exact path="/" element={<Login />} />
