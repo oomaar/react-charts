@@ -10,6 +10,11 @@ export const LoginContainer = styled.div`
   color: #1a202c;
   height: 100vh;
   display: flex;
+
+  @media screen and (max-width: 1024px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const LoginImageContainer = styled.div`
@@ -20,6 +25,10 @@ export const LoginImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: #fff;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const LoginTitle = styled.h3`
@@ -50,7 +59,13 @@ export const FormTitle = styled.h3`
   font-size: 1.3rem;
 `;
 
-export const FormForm = styled.form``;
+export const FormForm = styled.form`
+  width: 300px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 export const FormInputContainer = styled.div`
   background: radial-gradient(
@@ -70,7 +85,7 @@ export const FormInputContainer = styled.div`
   justify-content: center;
   padding: 2px;
   margin: 2rem 0;
-  width: 300px;
+  width: 100%;
   height: 50px;
   position: relative;
   border-radius: 1.4rem;
@@ -122,6 +137,8 @@ export const FormInput = styled.input`
 `;
 
 export const FormButton = styled.button`
+  display: flex;
+  justify-content: center;
   background: #582cff;
   color: #fff;
   font-size: 1rem;
