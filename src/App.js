@@ -5,7 +5,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import React from "react";
-import { Login } from "./Screens";
+import { Login, ApplicationsPerfromance } from "./Screens";
 import { GlobalStyle } from "./Global/GlobalStyle";
 
 export const App = () => {
@@ -15,16 +15,20 @@ export const App = () => {
       <Router basename="/">
         <Routes>
           <Route exact path="/" element={<Login />} />
-          <Route element={<>Private Route</>}>
+          {/* <Route element={<>Private Route</>}> */}
+          <Route
+            element={
+              <div>
+                <Outlet />
+              </div>
+            }
+          >
             <Route
-              element={
-                <div>
-                  <Outlet />
-                </div>
-              }
-            >
-              <Route exact path={`/landing`} element={<p>Landing</p>} />
-            </Route>
+              exact
+              path={`/applications-performance`}
+              element={<ApplicationsPerfromance />}
+            />
+            {/* </Route> */}
           </Route>
         </Routes>
       </Router>
