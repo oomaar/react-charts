@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   LoginContainer,
   LoginImageContainer,
@@ -37,7 +38,9 @@ export const Login = () => {
               <span>Password</span>
             </FormLabel>
           </FormInputContainer>
-          <FormButton>Sign in</FormButton>
+          <Link to="/applications-performance">
+            <FormButton>Sign in</FormButton>
+          </Link>
         </FormForm>
         <FormCopyRight>Copyright © 2022 Fly Insights</FormCopyRight>
       </FormContainer>

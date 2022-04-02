@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import React from "react";
 import { Login, ApplicationsPerfromance } from "./Screens";
-import { GlobalStyle } from "./Global/GlobalStyle";
+import { GlobalStyle, Layout } from "./Global";
 
 export const App = () => {
   return (
@@ -18,9 +18,9 @@ export const App = () => {
           {/* <Route element={<>Private Route</>}> */}
           <Route
             element={
-              <div>
+              <Layout>
                 <Outlet />
-              </div>
+              </Layout>
             }
           >
             <Route
