@@ -8,10 +8,12 @@ import React from "react";
 import { Login, ApplicationsPerfromance } from "./Screens";
 import { GlobalStyle } from "./Global";
 import { Layout } from "./Layout";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./Global/GlobalStyle";
 
 export const App = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router basename="/">
         <Routes>
@@ -33,6 +35,6 @@ export const App = () => {
           </Route>
         </Routes>
       </Router>
-    </div>
+    </ThemeProvider>
   );
 };
