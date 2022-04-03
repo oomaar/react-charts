@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "Dashboard",
+    "icon": "bx bx-tachometer",
     "links": [
       {
         "id": 1.1,
@@ -50,6 +51,7 @@
   {
     "id": 2,
     "title": "Configuration",
+    "icon": "bx bx-candles",
     "links": [
       {
         "id": 2.1,
