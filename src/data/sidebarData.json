@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard",
+    "links": [
+      {
+        "id": 1.1,
+        "title": "Applications Performance",
+        "route": "/applications-perfromance",
+        "routeIndex": 0
+      },
+      {
+        "id": 1.2,
+        "title": "Applications Compliance",
+        "route": "/applications-compliance",
+        "routeIndex": 1
+      },
+      {
+        "id": 1.3,
+        "title": "It Performance",
+        "route": "/it-perfromance",
+        "routeIndex": 2
+      },
+      {
+        "id": 1.4,
+        "title": "Web Availability",
+        "route": "/web-availability",
+        "routeIndex": 3
+      },
+      {
+        "id": 1.5,
+        "title": "Visited Sites",
+        "route": "/visited-sites",
+        "routeIndex": 4
+      },
+      {
+        "id": 1.6,
+        "title": "License Monitoring",
+        "route": "/license-monitoring",
+        "routeIndex": 5
+      },
+      {
+        "id": 1.7,
+        "title": "Time Utilization",
+        "route": "/time-utilization",
+        "routeIndex": 6
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Configuration",
+    "links": [
+      {
+        "id": 2.1,
+        "title": "Application License",
+        "route": "/application-license",
+        "routeIndex": 7
+      },
+      {
+        "id": 2.2,
+        "title": "Allowed Applications",
+        "route": "/allowed-applications",
+        "routeIndex": 8
+      },
+      {
+        "id": 2.3,
+        "title": "Web Applications",
+        "route": "/web-applications",
+        "routeIndex": 9
+      }
+    ]
+  }
+]
