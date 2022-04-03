@@ -1,9 +1,14 @@
+import { ThemeProvider } from "styled-components";
+import { Sidebar } from ".";
+import { theme } from "../Global/GlobalStyle";
+
 export const Layout = ({ children }) => {
   return (
-    <div>
-      Navbar Sidebar
+    <ThemeProvider theme={theme}>
+      {/* Navbar */}
+      <Sidebar />
       {children}
-      Footer
-    </div>
+      {/* Footer */}
+    </ThemeProvider>
   );
 };
