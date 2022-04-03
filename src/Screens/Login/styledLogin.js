@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
 export const LoginContainer = styled.div`
-  background: linear-gradient(
-    159deg,
-    #0f123b 14.25%,
-    #090d2e 56.45%,
-    #020515 86.14%
-  );
+  background: ${({ theme }) => theme.colors.bodyColor};
   color: #1a202c;
   height: 100vh;
   display: flex;
@@ -37,7 +32,7 @@ export const LoginTitle = styled.h3`
   margin: 0.5rem 0;
 
   span {
-    color: #582cff;
+    color: ${({ theme }) => theme.colors.buttonColor};
   }
 `;
 
@@ -68,17 +63,7 @@ export const FormForm = styled.form`
 `;
 
 export const FormInputContainer = styled.div`
-  background: radial-gradient(
-      69.43% 69.43% at 50% 50%,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    radial-gradient(
-      60% 51.57% at 50% 50%,
-      #582cff 0%,
-      rgba(88, 44, 255, 0) 100%
-    ),
-    radial-gradient(54.8% 53% at 50% 50%, #151515 0%, rgba(21, 21, 21, 0) 100%);
+  background: ${({ theme }) => theme.colors.containerColor};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +93,7 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  background-color: #131536;
+  background-color: ${({ theme }) => theme.colors.inputColor};
   width: 100%;
   height: 95%;
   border-radius: 1rem;
@@ -139,7 +124,7 @@ export const FormInput = styled.input`
 export const FormButton = styled.button`
   display: flex;
   justify-content: center;
-  background: #582cff;
+  background: ${({ theme }) => theme.colors.buttonColor};
   color: #fff;
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -149,10 +134,10 @@ export const FormButton = styled.button`
   width: 300px;
 
   :hover {
-    background: #582cee;
+    background: ${({ theme }) => theme.colors.buttonHover};
   }
 `;
 
 export const FormCopyRight = styled.h6`
-  color: #6d778e;
+  color: ${({ theme }) => theme.colors.textColor};
 `;

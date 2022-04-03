@@ -2,7 +2,13 @@ import { createGlobalStyle } from "styled-components";
 
 export const theme = {
   colors: {
-    bodyColor: `radial-gradient(
+    bodyColor: `linear-gradient(
+      159deg,
+      #0f123b 14.25%,
+      #090d2e 56.45%,
+      #020515 86.14%
+    )`,
+    containerColor: `radial-gradient(
       69.43% 69.43% at 50% 50%,
       #ffffff 0%,
       rgba(255, 255, 255, 0) 100%
@@ -13,6 +19,10 @@ export const theme = {
       rgba(88, 44, 255, 0) 100%
     ),
     radial-gradient(54.8% 53% at 50% 50%, #151515 0%, rgba(21, 21, 21, 0) 100%)`,
+    buttonColor: `#582cff`,
+    buttonHover: `#582cee`,
+    textColor: `#6d778e`,
+    inputColor: `#131536`,
   },
 };
 
@@ -26,6 +36,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background: ${({ theme }) => theme.colors.bodyColor};
+    color: ${({ theme }) => theme.colors.textColor};
     font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
