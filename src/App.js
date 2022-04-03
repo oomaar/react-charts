@@ -6,7 +6,8 @@ import {
 } from "react-router-dom";
 import React from "react";
 import { Login, ApplicationsPerfromance } from "./Screens";
-import { GlobalStyle, Layout } from "./Global";
+import { GlobalStyle } from "./Global";
+import { Layout } from "./Layout";
 
 export const App = () => {
   return (
