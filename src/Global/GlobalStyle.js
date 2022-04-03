@@ -23,6 +23,7 @@ export const theme = {
     buttonHover: `#582cee`,
     textColor: `#6d778e`,
     inputColor: `#131536`,
+    borderColor: `#3182ce`,
   },
 };
 

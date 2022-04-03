@@ -82,7 +82,7 @@ export const FormLabel = styled.label`
   width: 100%;
   height: 100%;
   border-radius: 1rem;
-  color: #6d778e;
+  color: ${({ theme }) => theme.colors.textColor};
 
   span {
     position: absolute;
@@ -103,7 +103,7 @@ export const FormInput = styled.input`
   font-size: 1rem;
 
   :focus {
-    outline: 1px solid #3182ce;
+    outline: 1px solid ${({ theme }) => theme.colors.borderColor};
   }
 
   :focus + ${FormLabel} span {
