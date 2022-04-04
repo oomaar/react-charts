@@ -64,7 +64,7 @@ export const SidebarListGroupToggle = styled.div`
   }
 
   :hover {
-    background: #090d3f;
+    background: #090daf;
   }
 `;
 
@@ -87,7 +87,7 @@ export const SidebarList = styled.ul`
     transition: all 0.3s ease-in;
 
     :hover {
-      background: #090d3f;
+      background: #090daf;
     }
   }
 `;
