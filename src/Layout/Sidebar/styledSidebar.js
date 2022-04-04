@@ -40,7 +40,9 @@ export const SidebarTitle = styled.h3`
   }
 `;
 
-export const SidebarListContainer = styled.div``;
+export const SidebarListContainer = styled.div`
+  margin-top: 1rem;
+`;
 
 export const SidebarListGroup = styled.div``;
 
@@ -52,21 +54,40 @@ export const SidebarListGroupToggle = styled.div`
   cursor: pointer;
   border-radius: 1rem;
   transition: all 0.3s ease-in;
+  font-size: 1.2rem;
 
   .bx-chevron-down {
     margin-left: auto;
-    transform: rotate(-90deg);
+    transform: ${({ activeIndex }) =>
+      activeIndex ? "rotate(0deg)" : "rotate(-90deg)"};
+    transition: all 0.3s ease-in;
   }
 
   :hover {
-    background: #090d2f;
+    background: #090d3f;
   }
 `;
 
 export const SidebarList = styled.ul`
   overflow: hidden;
-  transition: all 0.3s ease-in;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
   height: ${({ activeIndex }) => (activeIndex ? "auto" : 0)};
   opacity: ${({ activeIndex }) => (activeIndex ? "1" : 0)};
   visibility: ${({ activeIndex }) => (activeIndex ? "visible" : "hidden")};
+  margin: 0 1rem;
+  transition: all 0.3s ease-in;
+
+  li {
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+
+    :hover {
+      background: #090d3f;
+    }
+  }
 `;

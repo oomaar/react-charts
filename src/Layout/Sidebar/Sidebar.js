@@ -59,20 +59,20 @@ export const Sidebar = () => {
       onClick={() => setActiveIndex(list.groupIndex)}
     >
       <SidebarListGroup>
-        <SidebarListGroupToggle>
+        <SidebarListGroupToggle
+          activeIndex={activeIndex === list.groupIndex && activeIndex}
+        >
           <i className={list.icon}></i>
           {list.title}
           <i className="bx bx-chevron-down"></i>
         </SidebarListGroupToggle>
-        {activeIndex === list.groupIndex && (
-          <SidebarList activeIndex={activeIndex}>
-            {list.links.map((link) => (
-              <li key={link.id}>
-                <p>{link.title}</p>
-              </li>
-            ))}
-          </SidebarList>
-        )}
+        <SidebarList
+          activeIndex={activeIndex === list.groupIndex && activeIndex}
+        >
+          {list.links.map((link) => (
+            <li key={link.id}>{link.title}</li>
+          ))}
+        </SidebarList>
       </SidebarListGroup>
     </SidebarListContainer>
   ));
