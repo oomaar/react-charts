@@ -1,9 +1,9 @@
-import { Sidebar } from ".";
+import { Sidebar, Navbar } from ".";
 
 export const Layout = ({ children }) => {
   return (
     <>
-      {/* Navbar */}
+      <Navbar />
       <Sidebar />
       {children}
       {/* Footer */}
