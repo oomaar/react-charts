@@ -21,6 +21,7 @@ export const Sidebar = () => {
       <SidebarListGroup>
         <SidebarListGroupToggle
           activeIndex={activeIndex === list.groupIndex && activeIndex}
+          className={activeIndex === list.groupIndex && "active"}
         >
           <i className={list.icon}></i>
           {list.title}

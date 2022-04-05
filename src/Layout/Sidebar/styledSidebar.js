@@ -63,6 +63,10 @@ export const SidebarListGroupToggle = styled.div`
     transition: all 0.3s ease-in;
   }
 
+  &.active {
+    background: #090daf;
+  }
+
   :hover {
     background: #090daf;
   }
