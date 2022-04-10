@@ -14,6 +14,8 @@ export const SidebarContainer = styled.aside`
   border-radius: 1rem;
   padding: 1rem;
   color: #fff;
+  transform: ${({ showSidebar }) => (showSidebar ? "scale(1)" : "scale(0)")};
+  transition: all 0.4s ease-in;
 `;
 
 export const SidebarHeader = styled.header`

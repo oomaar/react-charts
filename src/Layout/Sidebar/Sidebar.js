@@ -10,7 +10,7 @@ import {
   SidebarList,
 } from "./styledSidebar";
 
-export const Sidebar = () => {
+export const Sidebar = ({ showSidebar }) => {
   const [activeIndex, setActiveIndex] = useState(1);
 
   const sidebarLinks = sidebarData.map((list) => (
@@ -39,7 +39,7 @@ export const Sidebar = () => {
   ));
 
   return (
-    <SidebarContainer>
+    <SidebarContainer showSidebar={showSidebar}>
       <SidebarHeader>
         <SidebarTitle>
           <span>Fly</span> Insights

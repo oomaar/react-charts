@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavbarHeight } from "../../Global/GlobalStyle";
+import { NavbarHeight, SidebarWidth } from "../../Global/GlobalStyle";
 
 export const NavbarNav = styled.nav`
   position: fixed;
@@ -11,6 +11,26 @@ export const NavbarNav = styled.nav`
   justify-content: flex-end;
   align-items: center;
   gap: 0 1rem;
+`;
+
+export const NavbarButton = styled.div`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0;
+  margin-right: auto;
+  margin-left: calc(${SidebarWidth} + 2.5rem);
+  cursor: pointer;
+`;
+
+export const Line = styled.div`
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 1rem;
 `;
 
 export const SearchContainer = styled.div`
