@@ -11,12 +11,15 @@ import {
   Line,
 } from "./styledNavbar";
 
-export const Navbar = ({ setShowSidebar }) => {
+export const Navbar = ({ showSidebar, setShowSidebar }) => {
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
   return (
     <NavbarNav>
-      <NavbarButton onClick={() => setShowSidebar((state) => !state)}>
+      <NavbarButton
+        showSidebar={showSidebar}
+        onClick={() => setShowSidebar((state) => !state)}
+      >
         <Line></Line>
         <Line></Line>
         <Line></Line>

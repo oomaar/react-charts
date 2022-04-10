@@ -22,8 +22,10 @@ export const NavbarButton = styled.div`
   align-items: center;
   gap: 0.4rem 0;
   margin-right: auto;
-  margin-left: calc(${SidebarWidth} + 2.5rem);
+  margin-left: ${({ showSidebar }) =>
+    showSidebar ? `calc(${SidebarWidth} + 2.5rem)` : `0`};
   cursor: pointer;
+  transition: all 0.4s ease-in;
 `;
 
 export const Line = styled.div`
