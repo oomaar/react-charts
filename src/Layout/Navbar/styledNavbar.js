@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const NavbarNav = styled.nav`
-  border: 1px solid red;
   position: fixed;
   inset: 0;
   bottom: unset;
@@ -9,6 +8,7 @@ export const NavbarNav = styled.nav`
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 0 1rem;
 `;
 
@@ -41,8 +41,17 @@ export const SearchInput = styled.input`
   transition: all 0.5s ease-in;
 `;
 
-export const UserContainer = styled.div``;
+export const UserContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  cursor: pointer;
+`;
 
-export const UserAvatar = styled.div``;
+export const UserAvatar = styled.div`
+  font-size: 1.2rem;
+`;
 
-export const UserName = styled.p``;
+export const UserName = styled.p`
+  font-size: 1.2rem;
+`;

@@ -28,8 +28,8 @@ export const Navbar = () => {
       <UserContainer>
         <UserAvatar>
           <i class="bx bxs-user" />
-          <UserName>Sign In</UserName>
         </UserAvatar>
+        <UserName>Sign In</UserName>
       </UserContainer>
     </NavbarNav>
   );
