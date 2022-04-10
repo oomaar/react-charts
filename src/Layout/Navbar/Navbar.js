@@ -12,8 +12,6 @@ import {
 } from "./styledNavbar";
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
-  const [openSearchBar, setOpenSearchBar] = useState(false);
-
   return (
     <NavbarNav>
       <NavbarButton
@@ -24,16 +22,11 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         <Line></Line>
         <Line></Line>
       </NavbarButton>
-      <SearchContainer openSearchBar={openSearchBar}>
-        <SearchInputIcon onClick={() => setOpenSearchBar((state) => !state)}>
+      <SearchContainer>
+        <SearchInputIcon>
           <i class="bx bx-search-alt-2" />
         </SearchInputIcon>
-        <SearchInput
-          openSearchBar={openSearchBar}
-          type="text"
-          required
-          placeholder="Search Pages"
-        />
+        <SearchInput type="text" required placeholder="Search Pages" />
       </SearchContainer>
       <UserContainer>
         <UserAvatar>

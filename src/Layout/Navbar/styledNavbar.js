@@ -35,24 +35,6 @@ export const Line = styled.div`
   border-radius: 1rem;
 `;
 
-export const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid
-    ${({ openSearchBar, theme }) =>
-      openSearchBar ? theme.colors.borderColor : "#fff"};
-  width: ${({ openSearchBar }) => (openSearchBar ? "200px" : "40px")};
-  height: 35px;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  transition: all 0.3s ease-in;
-`;
-
-export const SearchInputIcon = styled.div`
-  font-size: 1.1rem;
-  cursor: pointer;
-`;
-
 export const SearchInput = styled.input`
   background: transparent;
   border: 0;
@@ -60,8 +42,27 @@ export const SearchInput = styled.input`
   font-size: 1rem;
   padding-left: 0.5rem;
   color: #fff;
-  width: ${({ openSearchBar }) => (openSearchBar ? "100%" : "0")};
+  width: 100%;
   transition: all 0.5s ease-in;
+`;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.colors.textColor};
+  width: 200px;
+  height: 35px;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in;
+
+  :focus-within {
+    border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  }
+`;
+
+export const SearchInputIcon = styled.div`
+  font-size: 1.1rem;
 `;
 
 export const UserContainer = styled.div`
