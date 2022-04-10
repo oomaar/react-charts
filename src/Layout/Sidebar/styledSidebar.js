@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SidebarWidth } from "../../Global/GlobalStyle";
 
 export const SidebarContainer = styled.aside`
   background: linear-gradient(
@@ -9,7 +10,7 @@ export const SidebarContainer = styled.aside`
   height: 90vh;
   position: fixed;
   inset: 2rem;
-  width: 300px;
+  width: ${SidebarWidth};
   border-radius: 1rem;
   padding: 1rem;
   color: #fff;

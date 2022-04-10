@@ -1,5 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
+export const NavbarHeight = `50px`;
+
+export const SidebarWidth = `300px`;
+
 export const theme = {
   colors: {
     bodyColor: `linear-gradient(
@@ -7,7 +11,7 @@ export const theme = {
       #0f123b 14.25%,
       #090d2e 56.45%,
       #020515 86.14%
-    )`,
+    )  center center / cover no-repeat`,
     containerColor: `radial-gradient(
       69.43% 69.43% at 50% 50%,
       #ffffff 0%,
@@ -42,6 +46,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
   }
 
   ul {

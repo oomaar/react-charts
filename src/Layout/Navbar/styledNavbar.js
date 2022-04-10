@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { NavbarHeight } from "../../Global/GlobalStyle";
 
 export const NavbarNav = styled.nav`
   position: fixed;
   inset: 0;
   bottom: unset;
-  height: 50px;
+  height: ${NavbarHeight};
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
