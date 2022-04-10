@@ -23,13 +23,13 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
       </NavbarButton>
       <SearchContainer>
         <SearchInputIcon>
-          <i class="bx bx-search-alt-2" />
+          <i className="bx bx-search-alt-2" />
         </SearchInputIcon>
         <SearchInput type="text" required placeholder="Search Pages" />
       </SearchContainer>
       <UserContainer>
         <UserAvatar>
-          <i class="bx bxs-user" />
+          <i className="bx bxs-user" />
         </UserAvatar>
         <UserName>Sign In</UserName>
       </UserContainer>
