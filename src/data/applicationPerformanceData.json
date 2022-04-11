@@ -1,0 +1,22 @@
+{
+  "charts": [
+    {
+      "id": 1,
+      "applicationName": "Brave Browser",
+      "successRate": 99,
+      "failureRate": 24
+    },
+    {
+      "id": 2,
+      "applicationName": "Chrome",
+      "successRate": 86,
+      "failureRate": 14
+    },
+    {
+      "id": 3,
+      "applicationName": "Slack",
+      "successRate": 76,
+      "failureRate": 1
+    }
+  ]
+}
