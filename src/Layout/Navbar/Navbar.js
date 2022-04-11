@@ -1,3 +1,5 @@
+import { Navigate, Route } from "react-router-dom";
+import { removeUserSession } from "../../client/client-utils/utils";
 import {
   NavbarNav,
   UserContainer,
@@ -33,6 +35,15 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         </UserAvatar>
         <UserName>Sign In</UserName>
       </UserContainer>
+      <button
+        onClick={() => {
+          removeUserSession();
+          // window.location.reload(false);
+          return <Route render={() => <Navigate to="/" replace />} />;
+        }}
+      >
+        Log out
+      </button>
     </NavbarNav>
   );
 };
