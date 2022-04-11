@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Outlet, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setUserSession } from "../../client/client-utils/utils";
 import { useState } from "react";
 import {
@@ -22,6 +22,8 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const isInvalid = password === "" || userName === "";
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,7 +32,7 @@ export const Login = () => {
       password: password,
     };
 
-    axios
+    await axios
       .post(
         "https://flyworex.azurewebsites.net/api/Authenticate/login",
         userobj,
@@ -45,11 +47,13 @@ export const Login = () => {
         };
         setUserSession(response.data.token, userinfo);
         localStorage.setItem("user-info", JSON.stringify(response.data));
-        navigate("/applications-performance");
       })
       .catch((error) => {
         alert("check your userName or Password");
+        setPassword("");
+        setUserName("");
       });
+    navigate("/applications-performance");
   };
 
   return (
@@ -85,7 +89,9 @@ export const Login = () => {
               <span>Password</span>
             </FormLabel>
           </FormInputContainer>
-          <FormButton type="submit">Sign in</FormButton>
+          <FormButton isDisabled={isInvalid} disabled={isInvalid} type="submit">
+            Sign in
+          </FormButton>
         </FormForm>
         <FormCopyRight>Copyright © 2022 Fly Insights</FormCopyRight>
       </FormContainer>

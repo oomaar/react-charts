@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeUserSession } from "../../client/client-utils/utils";
 import {
   NavbarNav,
@@ -13,6 +13,8 @@ import {
 } from "./styledNavbar";
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
+  const navigate = useNavigate();
+
   return (
     <NavbarNav>
       <NavbarButton
@@ -39,7 +41,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         onClick={() => {
           removeUserSession();
           // window.location.reload(false);
-          return <Route render={() => <Navigate to="/" replace />} />;
+          navigate("/");
         }}
       >
         Log out

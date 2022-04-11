@@ -132,6 +132,7 @@ export const FormButton = styled.button`
   margin: 0 auto;
   transition: all 0.2s ease-in;
   width: 300px;
+  opacity: ${({ isDisabled }) => (isDisabled ? "0.5" : "1")};
 
   :hover {
     background: ${({ theme }) => theme.colors.buttonHover};
