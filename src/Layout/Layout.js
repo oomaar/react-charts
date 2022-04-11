@@ -8,7 +8,6 @@ const Application = styled.main`
   margin-left: ${({ showSidebar }) =>
     showSidebar ? `calc(${SidebarWidth} + 2.5rem)` : `0`};
   transition: margin-left 0.4s ease-in;
-  border: 1px solid #f00;
 `;
 
 export const Layout = ({ children }) => {
