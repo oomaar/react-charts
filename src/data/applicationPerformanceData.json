@@ -4,19 +4,28 @@
       "id": 1,
       "applicationName": "Brave Browser",
       "successRate": 99,
-      "failureRate": 24
+      "failureDevices": 1,
+      "failureCount": 1,
+      "duration": "0",
+      "devices": 0
     },
     {
       "id": 2,
       "applicationName": "Chrome",
       "successRate": 86,
-      "failureRate": 14
+      "failureDevices": 14,
+      "failureCount": 14,
+      "duration": "0",
+      "devices": 0
     },
     {
       "id": 3,
       "applicationName": "Slack",
       "successRate": 76,
-      "failureRate": 1
+      "failureDevices": 24,
+      "failureCount": 24,
+      "duration": "0",
+      "devices": 0
     }
   ]
 }

@@ -12,18 +12,28 @@ import {
 export const TopCharts = () => {
   const chartsData = applicatoionPerfromaceData.charts.map((chart) => (
     <TopChartsCard key={chart.id}>
+      <TopChartsApplicationName>
+        {chart.applicationName}
+      </TopChartsApplicationName>
       <TopChartsInfoContainer>
-        <TopChartsApplicationName>
-          {chart.applicationName}
-        </TopChartsApplicationName>
         <TopChartsInfoTextContainer>
           <TopChartsInfo>
-            Success <span>{chart.successRate}%</span>
+            Duration <span>{chart.duration}%</span>
           </TopChartsInfo>
         </TopChartsInfoTextContainer>
         <TopChartsInfoTextContainer>
           <TopChartsInfo>
-            Failure <span>{chart.failureRate}%</span>
+            Failure Count <span>{chart.failureCount}%</span>
+          </TopChartsInfo>
+        </TopChartsInfoTextContainer>
+        <TopChartsInfoTextContainer>
+          <TopChartsInfo>
+            Failure Devices <span>{chart.failureDevices}%</span>
+          </TopChartsInfo>
+        </TopChartsInfoTextContainer>
+        <TopChartsInfoTextContainer>
+          <TopChartsInfo>
+            Devices <span>{chart.devices}%</span>
           </TopChartsInfo>
         </TopChartsInfoTextContainer>
       </TopChartsInfoContainer>

@@ -16,14 +16,16 @@ export const TopChartsCard = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
 `;
 
 export const TopChartsInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `;
 
 export const TopChartsApplicationName = styled.p`
@@ -102,8 +104,5 @@ export const TopChartsChartContainer = styled.div`
     background: #05cd99;
     transform: rotate(calc(${({ chartProgress }) => chartProgress} * 3.6deg))
       translateY(calc(50% - 150px / 2));
-  }
-
-  p {
   }
 `;
