@@ -49,9 +49,13 @@ export const Login = () => {
         localStorage.setItem("user-info", JSON.stringify(response.data));
       })
       .catch((error) => {
+        console.log(
+          "🚀 ~ file: Login.js ~ line 52 ~ handleSubmit ~ error",
+          error
+        );
         alert("check your userName or Password");
-        setPassword("");
         setUserName("");
+        setPassword("");
       });
     navigate("/applications-performance");
   };

@@ -78,4 +78,5 @@ export const UserAvatar = styled.div`
 
 export const UserName = styled.p`
   font-size: 1.2rem;
+  text-transform: capitalize;
 `;
