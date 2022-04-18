@@ -10,10 +10,16 @@ import {
   SearchInput,
   NavbarButton,
   Line,
+  LogoutButton,
 } from "./styledNavbar";
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeUserSession();
+    navigate("/");
+  };
 
   return (
     <NavbarNav>
@@ -37,14 +43,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         </UserAvatar>
         <UserName>{getUser().username}</UserName>
       </UserContainer>
-      <button
-        onClick={() => {
-          removeUserSession();
-          navigate("/");
-        }}
-      >
-        Log out
-      </button>
+      <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
     </NavbarNav>
   );
 };

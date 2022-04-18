@@ -80,3 +80,19 @@ export const UserName = styled.p`
   font-size: 1.2rem;
   text-transform: capitalize;
 `;
+
+export const LogoutButton = styled.button`
+  background: 0;
+  border: 1px solid ${({ theme }) => theme.colors.textColor};
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+
+  :hover {
+    background-color: #090daf;
+    border: 1px solid transparent;
+  }
+`;
