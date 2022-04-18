@@ -12,7 +12,6 @@ import {
 export const TopCharts = () => {
   const chartsData = applicatoionPerfromaceData.charts.map((chart) => (
     <TopChartsCard key={chart.id}>
-        // I thinks the charts should be flexed column
       <TopChartsApplicationName>
         {chart.applicationName}
       </TopChartsApplicationName>
