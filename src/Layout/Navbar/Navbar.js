@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { getUser, removeUserSession } from "../../client/client-utils/utils";
+import { useAuth } from "../../context/AuthContext";
 import {
   NavbarNav,
   UserContainer,
@@ -14,12 +13,9 @@ import {
 } from "./styledNavbar";
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
-  const navigate = useNavigate();
+  const auth = useAuth();
 
-  const handleLogout = () => {
-    removeUserSession();
-    navigate("/");
-  };
+  const handleLogout = () => auth.logout();
 
   return (
     <NavbarNav>
@@ -41,7 +37,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         <UserAvatar>
           <i className="bx bxs-user" />
         </UserAvatar>
-        <UserName>{getUser().username}</UserName>
+        <UserName>asdas</UserName>
       </UserContainer>
       <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
     </NavbarNav>
