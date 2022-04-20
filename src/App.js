@@ -1,50 +1,52 @@
+import { ThemeProvider } from "styled-components";
+import { useAuth } from "./context/AuthContext";
+import { GlobalStyle } from "./Global";
+import { theme } from "./Global/GlobalStyle";
+import { UnAuthenticatedApp, AuthenticatedApp } from "./AuthComponents";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Outlet,
   Navigate,
+  Outlet,
 } from "react-router-dom";
-import React from "react";
-import { Login, ApplicationsPerfromance } from "./Screens";
-import { GlobalStyle } from "./Global";
-import { Layout } from "./Layout";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./Global/GlobalStyle";
-import { PublicClient } from "./client/PublicClient";
-import { getToken } from "./client/client-utils/utils";
+import { ApplicationsPerfromance } from "./Screens";
 
 export const App = () => {
+  const user = useAuth().user;
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router basename="/">
-        {getToken() ? (
-          <Routes>
-            <Route exact path="/" element={<Login />} />
-            <Route element={<PublicClient />}>
+      <div>
+        <Router basename="/">
+          {user === undefined ? (
+            <Routes>
+              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/" element={<UnAuthenticatedApp />} />
+            </Routes>
+          ) : (
+            <Routes>
               <Route
                 element={
-                  <Layout>
+                  <AuthenticatedApp>
                     <Outlet />
-                  </Layout>
+                  </AuthenticatedApp>
                 }
               >
                 <Route
-                  exact
-                  path={`/applications-performance`}
+                  path="/applications-performance"
                   element={<ApplicationsPerfromance />}
                 />
+                <Route
+                  path="*"
+                  element={<Navigate to="/applications-performance" />}
+                />
               </Route>
-            </Route>
-          </Routes>
-        ) : (
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        )}
-      </Router>
+            </Routes>
+          )}
+        </Router>
+      </div>
     </ThemeProvider>
   );
 };

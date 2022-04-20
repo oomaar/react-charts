@@ -1,6 +1,3 @@
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { setUserSession } from "../../client/client-utils/utils";
 import { useState } from "react";
 import {
   LoginContainer,
@@ -16,49 +13,19 @@ import {
   FormButton,
   FormCopyRight,
 } from "./styledLogin";
+import { useAuth } from "../../context/AuthContext";
 
 export const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const auth = useAuth();
 
   const isInvalid = password === "" || userName === "";
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const userobj = {
-      username: userName,
-      password: password,
-    };
-
-    await axios
-      .post(
-        "https://flyworex.azurewebsites.net/api/Authenticate/login",
-        userobj,
-        {
-          headers: { "Access-Control-Allow-Origin": "*" },
-        }
-      )
-      .then((response) => {
-        const userinfo = {
-          username: userName,
-          role: response.data.role,
-        };
-        setUserSession(response.data.token, userinfo);
-        localStorage.setItem("user-info", JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(
-          "🚀 ~ file: Login.js ~ line 52 ~ handleSubmit ~ error",
-          error
-        );
-        alert("check your userName or Password");
-        setUserName("");
-        setPassword("");
-      });
-    navigate("/applications-performance");
-  };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    auth.login(userName, password);
+  }
 
   return (
     <LoginContainer>
