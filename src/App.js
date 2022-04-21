@@ -10,7 +10,7 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import { ApplicationsPerfromance } from "./Screens";
+import { ApplicationsPerformance } from "./Screens";
 
 export const App = () => {
   const user = useAuth().user;
@@ -36,7 +36,7 @@ export const App = () => {
               >
                 <Route
                   path="/applications-performance"
-                  element={<ApplicationsPerfromance />}
+                  element={<ApplicationsPerformance />}
                 />
                 <Route
                   path="*"
