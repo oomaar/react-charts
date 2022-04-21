@@ -14,7 +14,6 @@ import {
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
   const auth = useAuth();
-
   const handleLogout = () => auth.logout();
 
   return (
@@ -37,7 +36,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         <UserAvatar>
           <i className="bx bxs-user" />
         </UserAvatar>
-        <UserName>asdas</UserName>
+        <UserName>{auth?.user?.userName}</UserName>
       </UserContainer>
       <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
     </NavbarNav>
