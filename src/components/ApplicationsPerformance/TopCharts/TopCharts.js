@@ -10,7 +10,6 @@ import {
 } from "./styledTopCharts";
 
 export const TopCharts = () => {
-  // Dummy commit
   const chartsData = applicatoionPerfromaceData.charts.map((chart) => (
     <TopChartsCard key={chart.id}>
       <TopChartsApplicationName>
