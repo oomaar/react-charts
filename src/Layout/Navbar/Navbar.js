@@ -9,12 +9,13 @@ import {
   SearchInput,
   NavbarButton,
   Line,
-  LogoutButton,
+  // LogoutButton,
 } from "./styledNavbar";
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
   const auth = useAuth();
-  const handleLogout = () => auth.logout();
+  console.log("🚀 ~ file: Navbar.js ~ line 17 ~ Navbar ~ auth", auth);
+  // const handleLogout = () => auth.logout();
 
   return (
     <NavbarNav>
@@ -38,7 +39,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         </UserAvatar>
         <UserName>{auth?.user?.userName}</UserName>
       </UserContainer>
-      <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
+      {/* <LogoutButton onClick={handleLogout}>Log out</LogoutButton> */}
     </NavbarNav>
   );
 };
