@@ -2,15 +2,20 @@ import styled from "styled-components";
 import { NavbarHeight, SidebarWidth } from "../../Global/GlobalStyle";
 
 export const NavbarNav = styled.nav`
+  background: linear-gradient(
+    111.84deg,
+    rgba(6, 11, 38, 0.94) 59.3%,
+    rgba(26, 31, 55, 0.9) 100%
+  );
   position: fixed;
   inset: 0;
   bottom: unset;
   height: ${NavbarHeight};
-  padding: 1rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 0 1rem;
+  padding: 0.6rem 1rem;
 `;
 
 export const NavbarButton = styled.div`
@@ -39,26 +44,28 @@ export const Line = styled.div`
   border-radius: 1rem;
   transition: all 1s ease-in;
 
-  :nth-child(1) {
-    background-color: ${({ showSidebar }) =>
-      !showSidebar ? "#fff" : "#b33a3a"};
-    transform: ${({ showSidebar }) =>
-      !showSidebar
-        ? "rotate(0) translateY(0) translateX(0)"
-        : "rotate(45deg) translateY(12px) translateX(13px)"};
-  }
+  @media screen and (min-width: 665px) {
+    :nth-child(1) {
+      background-color: ${({ showSidebar }) =>
+        !showSidebar ? "#fff" : "#b33a3a"};
+      transform: ${({ showSidebar }) =>
+        !showSidebar
+          ? "rotate(0) translateY(0) translateX(0)"
+          : "rotate(45deg) translateY(12px) translateX(13px)"};
+    }
 
-  :nth-child(2) {
-    width: ${({ showSidebar }) => (showSidebar ? "0" : "25px")};
-  }
+    :nth-child(2) {
+      width: ${({ showSidebar }) => (showSidebar ? "0" : "25px")};
+    }
 
-  :nth-child(3) {
-    background-color: ${({ showSidebar }) =>
-      !showSidebar ? "#fff" : "#b33a3a"};
-    transform: ${({ showSidebar }) =>
-      !showSidebar
-        ? "rotate(0) translateX(0)"
-        : "rotate(-45deg) translateX(1px)"};
+    :nth-child(3) {
+      background-color: ${({ showSidebar }) =>
+        !showSidebar ? "#fff" : "#b33a3a"};
+      transform: ${({ showSidebar }) =>
+        !showSidebar
+          ? "rotate(0) translateX(0)"
+          : "rotate(-45deg) translateX(1px)"};
+    }
   }
 `;
 
