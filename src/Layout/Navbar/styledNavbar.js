@@ -37,6 +37,29 @@ export const Line = styled.div`
   height: 3px;
   background-color: #fff;
   border-radius: 1rem;
+  transition: all 1s ease-in;
+
+  :nth-child(1) {
+    background-color: ${({ showSidebar }) =>
+      !showSidebar ? "#fff" : "#b33a3a"};
+    transform: ${({ showSidebar }) =>
+      !showSidebar
+        ? "rotate(0) translateY(0) translateX(0)"
+        : "rotate(45deg) translateY(12px) translateX(13px)"};
+  }
+
+  :nth-child(2) {
+    width: ${({ showSidebar }) => (showSidebar ? "0" : "25px")};
+  }
+
+  :nth-child(3) {
+    background-color: ${({ showSidebar }) =>
+      !showSidebar ? "#fff" : "#b33a3a"};
+    transform: ${({ showSidebar }) =>
+      !showSidebar
+        ? "rotate(0) translateX(0)"
+        : "rotate(-45deg) translateX(1px)"};
+  }
 `;
 
 export const SearchInput = styled.input`

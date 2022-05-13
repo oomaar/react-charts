@@ -22,9 +22,9 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         showSidebar={showSidebar}
         onClick={() => setShowSidebar((state) => !state)}
       >
-        <Line></Line>
-        <Line></Line>
-        <Line></Line>
+        <Line showSidebar={showSidebar}></Line>
+        <Line showSidebar={showSidebar}></Line>
+        <Line showSidebar={showSidebar}></Line>
       </NavbarButton>
       <SearchContainer>
         <SearchInputIcon>

@@ -58,7 +58,7 @@ export const SidebarTitle = styled.h3`
 `;
 
 export const SidebarCloseIcon = styled.div`
-  /* display: none; */
+  display: none;
 
   @media screen and (max-width: 665px) {
     display: block;
