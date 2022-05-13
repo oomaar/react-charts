@@ -46,7 +46,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
   }
 
   ul {

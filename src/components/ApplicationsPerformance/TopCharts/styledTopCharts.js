@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const TopChartsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   color: #fff;
 `;
 
 export const TopChartsCard = styled.div`
   background: linear-gradient(
     127.09deg,
-    rgba(6, 11, 40, 0.94) 25.41%,
-    rgba(10, 14, 35, 0.49) 69.65%
+    rgba(26, 21, 50, 0.94) 25.41%,
+    rgba(20, 24, 45, 0.49) 69.65%
   );
   padding: 1rem;
   border-radius: 1rem;
