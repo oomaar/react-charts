@@ -16,6 +16,7 @@ export const NavbarNav = styled.nav`
   align-items: center;
   gap: 0 1rem;
   padding: 0.6rem 1rem;
+  z-index: 1000;
 `;
 
 export const NavbarButton = styled.div`
