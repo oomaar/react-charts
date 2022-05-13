@@ -9,39 +9,44 @@ import {
   TopChartsInfoTextContainer,
 } from "./styledTopCharts";
 
-export const TopCharts = () => {
-  const chartsData = applicatoionPerfromaceData.charts.map((chart) => (
-    <TopChartsCard key={chart.id}>
-      <TopChartsApplicationName>
-        {chart.applicationName}
-      </TopChartsApplicationName>
-      <TopChartsInfoContainer>
-        <TopChartsInfoTextContainer>
-          <TopChartsInfo>
-            Duration <span>{chart.duration}%</span>
-          </TopChartsInfo>
-        </TopChartsInfoTextContainer>
-        <TopChartsInfoTextContainer>
-          <TopChartsInfo>
-            Failure Count <span>{chart.failureCount}%</span>
-          </TopChartsInfo>
-        </TopChartsInfoTextContainer>
-        <TopChartsInfoTextContainer>
-          <TopChartsInfo>
-            Failure Devices <span>{chart.failureDevices}%</span>
-          </TopChartsInfo>
-        </TopChartsInfoTextContainer>
-        <TopChartsInfoTextContainer>
-          <TopChartsInfo>
-            Devices <span>{chart.devices}%</span>
-          </TopChartsInfo>
-        </TopChartsInfoTextContainer>
-      </TopChartsInfoContainer>
-      <TopChartsChartContainer chartProgress={chart.successRate}>
-        <p>{chart.successRate}%</p>
-      </TopChartsChartContainer>
-    </TopChartsCard>
-  ));
+export const TopCharts = ({ data }) => {
+  console.log("🚀 ~ file: TopCharts.js ~ line 13 ~ TopCharts ~ data", data);
+  const chartsData = data.map((chart, index) => {
+    const percentage = Number(
+      ((chart.successCount / chart.totalCount) * 100).toFixed(1)
+    );
+
+    return (
+      <TopChartsCard key={index}>
+        <TopChartsApplicationName>{chart.processName}</TopChartsApplicationName>
+        <TopChartsInfoContainer>
+          <TopChartsInfoTextContainer>
+            <TopChartsInfo>
+              Duration <span>{(chart.totalCount / 3).toFixed(2)}</span>
+            </TopChartsInfo>
+          </TopChartsInfoTextContainer>
+          <TopChartsInfoTextContainer>
+            <TopChartsInfo>
+              Devices <span>{chart.computersCount}</span>
+            </TopChartsInfo>
+          </TopChartsInfoTextContainer>
+          <TopChartsInfoTextContainer>
+            <TopChartsInfo>
+              Failures Count <span>{chart.failureCount}</span>
+            </TopChartsInfo>
+          </TopChartsInfoTextContainer>
+          <TopChartsInfoTextContainer>
+            <TopChartsInfo>
+              Failure Devices <span>{chart.failureComputersCount}</span>
+            </TopChartsInfo>
+          </TopChartsInfoTextContainer>
+        </TopChartsInfoContainer>
+        <TopChartsChartContainer chartProgress={percentage}>
+          <p>{percentage}%</p>
+        </TopChartsChartContainer>
+      </TopChartsCard>
+    );
+  });
 
   return <TopChartsContainer>{chartsData}</TopChartsContainer>;
 };

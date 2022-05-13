@@ -10,8 +10,6 @@ export const ApplicationsPerformance = () => {
   const userToken = useAuth().user.token;
 
   useEffect(() => {
-    // https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance
-
     const fetchData = async () => {
       const response = await axios.get(
         `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
@@ -24,7 +22,7 @@ export const ApplicationsPerformance = () => {
 
   return (
     <PerformanceContainer>
-      <TopCharts />
+      <TopCharts data={data.slice(0, 4)} />
       <h1>TODO: Applications Perfromance Table (Table)</h1>
       <h1>
         TODO: Applications Perfromance Table (Table): Download Excel & PDF
