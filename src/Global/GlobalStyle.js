@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const NavbarHeight = `50px`;
+export const NavbarHeight = `60px`;
 
 export const SidebarWidth = `300px`;
 
