@@ -16,9 +16,9 @@ export const TopCharts = ({ data }) => {
     );
 
     return (
-      <TopChartsBox>
+      <TopChartsBox key={index}>
         <TopChartsApplicationName>{chart.processName}</TopChartsApplicationName>
-        <TopChartsCard key={index}>
+        <TopChartsCard>
           <TopChartsInfoContainer>
             <TopChartsInfoTextContainer>
               <TopChartsInfo>
