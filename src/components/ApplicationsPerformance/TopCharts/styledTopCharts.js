@@ -1,36 +1,56 @@
 import styled from "styled-components";
 
-export const TopChartsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  color: #fff;
-`;
-
-export const TopChartsCard = styled.div`
+export const TopChartsBox = styled.div`
   background: linear-gradient(
     127.09deg,
     rgba(26, 21, 50, 0.94) 25.41%,
     rgba(20, 24, 45, 0.49) 69.65%
   );
-  padding: 1rem;
+  padding: 1rem 0.3rem;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 500px;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
+`;
+
+export const TopChartsApplicationName = styled.p`
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+export const TopChartsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 500px);
   gap: 1rem;
+  color: #fff;
+
+  @media screen and (max-width: 1356px) {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+`;
+
+export const TopChartsCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 0;
 `;
 
 export const TopChartsInfoContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-`;
 
-export const TopChartsApplicationName = styled.p`
-  font-size: 1.6rem;
-  font-weight: 700;
+  @media screen and (max-width: 850px) {
+    grid-template-columns: repeat(1, 1fr);
+    /* justify-items: center; */
+  }
 `;
 
 export const TopChartsInfoTextContainer = styled.div`
@@ -40,9 +60,9 @@ export const TopChartsInfoTextContainer = styled.div`
     #060c29 28.26%,
     rgba(255, 255, 255, 0.1) 91.2%
   );
-  padding: 1rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 1rem;
-  width: 200px;
+  width: 145px;
 `;
 
 export const TopChartsInfo = styled.span`

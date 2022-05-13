@@ -1,4 +1,5 @@
 import {
+  TopChartsBox,
   TopChartsApplicationName,
   TopChartsCard,
   TopChartsChartContainer,
@@ -16,34 +17,36 @@ export const TopCharts = ({ data }) => {
     );
 
     return (
-      <TopChartsCard key={index}>
+      <TopChartsBox>
         <TopChartsApplicationName>{chart.processName}</TopChartsApplicationName>
-        <TopChartsInfoContainer>
-          <TopChartsInfoTextContainer>
-            <TopChartsInfo>
-              Duration <span>{(chart.totalCount / 3).toFixed(2)}</span>
-            </TopChartsInfo>
-          </TopChartsInfoTextContainer>
-          <TopChartsInfoTextContainer>
-            <TopChartsInfo>
-              Devices <span>{chart.computersCount}</span>
-            </TopChartsInfo>
-          </TopChartsInfoTextContainer>
-          <TopChartsInfoTextContainer>
-            <TopChartsInfo>
-              Failures Count <span>{chart.failureCount}</span>
-            </TopChartsInfo>
-          </TopChartsInfoTextContainer>
-          <TopChartsInfoTextContainer>
-            <TopChartsInfo>
-              Failure Devices <span>{chart.failureComputersCount}</span>
-            </TopChartsInfo>
-          </TopChartsInfoTextContainer>
-        </TopChartsInfoContainer>
-        <TopChartsChartContainer chartProgress={percentage}>
-          <p>{percentage}%</p>
-        </TopChartsChartContainer>
-      </TopChartsCard>
+        <TopChartsCard key={index}>
+          <TopChartsInfoContainer>
+            <TopChartsInfoTextContainer>
+              <TopChartsInfo>
+                Duration <span>{(chart.totalCount / 3).toFixed(2)}</span>
+              </TopChartsInfo>
+            </TopChartsInfoTextContainer>
+            <TopChartsInfoTextContainer>
+              <TopChartsInfo>
+                Devices <span>{chart.computersCount}</span>
+              </TopChartsInfo>
+            </TopChartsInfoTextContainer>
+            <TopChartsInfoTextContainer>
+              <TopChartsInfo>
+                Failures Count <span>{chart.failureCount}</span>
+              </TopChartsInfo>
+            </TopChartsInfoTextContainer>
+            <TopChartsInfoTextContainer>
+              <TopChartsInfo>
+                Failure Devices <span>{chart.failureComputersCount}</span>
+              </TopChartsInfo>
+            </TopChartsInfoTextContainer>
+          </TopChartsInfoContainer>
+          <TopChartsChartContainer chartProgress={percentage}>
+            <p>{percentage}%</p>
+          </TopChartsChartContainer>
+        </TopChartsCard>
+      </TopChartsBox>
     );
   });
 
