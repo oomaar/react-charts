@@ -1,4 +1,3 @@
-import applicatoionPerfromaceData from "../../../data/applicationPerformanceData.json";
 import {
   TopChartsApplicationName,
   TopChartsCard,
