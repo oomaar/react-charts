@@ -10,7 +10,6 @@ import {
 } from "./styledTopCharts";
 
 export const TopCharts = ({ data }) => {
-  console.log("🚀 ~ file: TopCharts.js ~ line 13 ~ TopCharts ~ data", data);
   const chartsData = data.map((chart, index) => {
     const percentage = Number(
       ((chart.successCount / chart.totalCount) * 100).toFixed(1)
