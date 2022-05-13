@@ -13,6 +13,10 @@ export const TopChartsBox = styled.div`
   @media screen and (max-width: 850px) {
     width: 100%;
   }
+
+  @media screen and (max-width: 665px) {
+    width: 95%;
+  }
 `;
 
 export const TopChartsApplicationName = styled.p`
@@ -40,6 +44,10 @@ export const TopChartsCard = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1rem 0;
+
+  @media screen and (max-width: 330px) {
+    flex-direction: column;
+  }
 `;
 
 export const TopChartsInfoContainer = styled.div`
