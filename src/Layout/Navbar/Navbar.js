@@ -37,7 +37,7 @@ export const Navbar = ({ showSidebar, setShowSidebar }) => {
         <UserAvatar>
           <i className="bx bxs-user" />
         </UserAvatar>
-        <UserName>{auth?.user?.userName}</UserName>
+        <UserName>{auth?.user?.username}</UserName>
       </UserContainer>
       {/* <LogoutButton onClick={handleLogout}>Log out</LogoutButton> */}
     </NavbarNav>
