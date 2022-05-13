@@ -14,7 +14,6 @@ import {
 
 export const Navbar = ({ showSidebar, setShowSidebar }) => {
   const auth = useAuth();
-  console.log("🚀 ~ file: Navbar.js ~ line 17 ~ Navbar ~ auth", auth);
   // const handleLogout = () => auth.logout();
 
   return (
