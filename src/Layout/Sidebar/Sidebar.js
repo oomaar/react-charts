@@ -8,9 +8,10 @@ import {
   SidebarListGroup,
   SidebarListGroupToggle,
   SidebarList,
+  SidebarCloseIcon,
 } from "./styledSidebar";
 
-export const Sidebar = ({ showSidebar }) => {
+export const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const [activeIndex, setActiveIndex] = useState(1);
 
   const sidebarLinks = sidebarData.map((list) => (
@@ -40,6 +41,9 @@ export const Sidebar = ({ showSidebar }) => {
 
   return (
     <SidebarContainer showSidebar={showSidebar}>
+      <SidebarCloseIcon>
+        <i className="bx bx-x" onClick={() => setShowSidebar(false)} />
+      </SidebarCloseIcon>
       <SidebarHeader>
         <SidebarTitle>
           <span>Fly</span> Insights

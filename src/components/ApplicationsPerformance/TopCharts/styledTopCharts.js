@@ -86,13 +86,13 @@ export const TopChartsChartContainer = styled.div`
   margin: 5px;
   place-content: center;
   font-size: 25px;
+  z-index: 1;
   font-weight: bold;
 
   ::before {
     content: "";
     position: absolute;
     border-radius: 50%;
-
     inset: 0;
     background: radial-gradient(
           farthest-side,

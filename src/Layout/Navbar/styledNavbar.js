@@ -26,6 +26,10 @@ export const NavbarButton = styled.div`
     showSidebar ? `calc(${SidebarWidth} + 2.5rem)` : `0`};
   cursor: pointer;
   transition: all 0.4s ease-in;
+
+  @media screen and (max-width: 665px) {
+    margin-left: 0;
+  }
 `;
 
 export const Line = styled.div`

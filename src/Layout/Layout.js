@@ -8,6 +8,10 @@ const Application = styled.main`
   margin-left: ${({ showSidebar }) =>
     showSidebar ? `calc(${SidebarWidth} + 2.5rem)` : `0`};
   transition: margin-left 0.4s ease-in;
+
+  @media screen and (max-width: 665px) {
+    margin-left: 0;
+  }
 `;
 
 export const Layout = ({ children }) => {
@@ -16,7 +20,7 @@ export const Layout = ({ children }) => {
   return (
     <Application showSidebar={showSidebar}>
       <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      <Sidebar showSidebar={showSidebar} />
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       {children}
       {/* Footer */}
     </Application>

@@ -16,6 +16,20 @@ export const SidebarContainer = styled.aside`
   color: #fff;
   transform: ${({ showSidebar }) => (showSidebar ? "scale(1)" : "scale(0)")};
   transition: all 0.4s ease-in;
+  z-index: 1000;
+
+  @media screen and (max-width: 665px) {
+    background: linear-gradient(
+      111.84deg,
+      rgba(6, 11, 38, 1) 59.3%,
+      rgba(26, 31, 55, 1) 100%
+    );
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    transform: ${({ showSidebar }) =>
+      showSidebar ? "scale(1) translateX(0)" : "scale(1) translateX(-1000vh)"};
+  }
 `;
 
 export const SidebarHeader = styled.header`
@@ -43,11 +57,27 @@ export const SidebarTitle = styled.h3`
   }
 `;
 
+export const SidebarCloseIcon = styled.div`
+  /* display: none; */
+
+  @media screen and (max-width: 665px) {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+`;
+
 export const SidebarListContainer = styled.div`
   margin-top: 1rem;
 `;
 
-export const SidebarListGroup = styled.div``;
+export const SidebarListGroup = styled.div`
+  @media screen and (max-width: 665px) {
+    text-align: center;
+  }
+`;
 
 export const SidebarListGroupToggle = styled.div`
   display: flex;
