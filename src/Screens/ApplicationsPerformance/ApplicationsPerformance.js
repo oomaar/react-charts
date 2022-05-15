@@ -32,7 +32,7 @@ export const ApplicationsPerformance = () => {
 
   return (
     <PerformanceContainer>
-      {/* <TopCharts data={data.slice(0, 4)} /> */}
+      <TopCharts data={data.slice(0, 4)} />
       <h1>TODO: Applications Perfromance Table (Table)</h1>
       <h1>
         TODO: Applications Perfromance Table (Table): Download Excel & PDF
