@@ -3,15 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
 async function useFetchData(dataURL) {
-  console.log(
-    "🚀 ~ file: useFetchData.js ~ line 6 ~ useFetchData ~ dataURL",
-    dataURL
-  );
   const [data, setData] = useState([]);
-  console.log(
-    "🚀 ~ file: useFetchData.js ~ line 7 ~ useFetchData ~ data",
-    data
-  );
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
