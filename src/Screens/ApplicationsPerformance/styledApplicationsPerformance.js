@@ -19,6 +19,12 @@ export const TableContainer = styled.div`
   width: 95%;
 `;
 
+export const TableAdjustHieghtContainer = styled.div`
+  width: 100%;
+  max-height: 500vh;
+  height: 100%;
+`;
+
 export const Table = styled.table`
   margin: 2rem 0;
   width: 100%;
@@ -134,5 +140,27 @@ export const TableDownloadButton = styled.button`
 
   i {
     margin-right: 0.1rem;
+  }
+`;
+
+// <TablePagination />
+export const TablePaginationContaier = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+`;
+
+export const TablePaginationButton = styled.button`
+  background: transparent;
+  border: 1px solid #56577a;
+  color: #fff;
+  padding: 0.6rem;
+  margin: 0 0.3rem;
+  border-radius: 0.3rem;
+
+  &.active {
+    background: #090daf;
   }
 `;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { range } from "lodash";
 import {
   PerformanceContainer,
   Table,
@@ -19,6 +20,10 @@ import {
   TableSearchInput,
   TableButtonsContainer,
   TableDownloadButton,
+  // Pagination
+  TablePaginationContaier,
+  TablePaginationButton,
+  TableAdjustHieghtContainer,
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
 // import useFetchData from "../../hooks/useFetchData";
@@ -28,6 +33,65 @@ export const ApplicationsPerformance = () => {
 
   // Table Search
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Table Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tableRowsPerPage, setTableRowsPerPage] = useState(10);
+  const visibleCount = 5;
+  const indexOfLastPost = currentPage * tableRowsPerPage;
+  const indexOfFirstPost = indexOfLastPost - tableRowsPerPage;
+  const totalRowsCount = data.length;
+  const numberOfPages = range(
+    1,
+    Math.ceil(totalRowsCount / tableRowsPerPage) + 1
+  );
+
+  const getSliceStart = () => {
+    if (range(0, Math.ceil(visibleCount / 2)).includes(currentPage)) {
+      return numberOfPages[0] - 1;
+    } else if (
+      range(
+        numberOfPages.length - Math.floor(visibleCount / 2),
+        numberOfPages.length + 1
+      ).includes(currentPage)
+    ) {
+      return numberOfPages[numberOfPages.length - 1 - visibleCount];
+    } else {
+      return currentPage - Math.ceil(visibleCount / 2);
+    }
+  };
+
+  const getSliceEnd = () => {
+    if (
+      range(
+        numberOfPages.length - Math.floor(visibleCount / 2),
+        numberOfPages.length + 1
+      ).includes(currentPage)
+    ) {
+      return numberOfPages[numberOfPages.length - 1];
+    } else if (range(0, Math.ceil(visibleCount / 2)).includes(currentPage)) {
+      return visibleCount;
+    } else {
+      return currentPage + Math.floor(visibleCount / 2);
+    }
+  };
+
+  const currentPageRowsData = data.slice(indexOfFirstPost, indexOfLastPost);
+
+  const displayNumberOfEntriesPerPage = () => {
+    if (currentPage === numberOfPages.length) {
+      if (totalRowsCount % tableRowsPerPage === 0) {
+        return tableRowsPerPage;
+      } else {
+        return totalRowsCount % tableRowsPerPage;
+      }
+    } else if (totalRowsCount === 0) {
+      return 0;
+    } else {
+      return tableRowsPerPage;
+    }
+  };
+  // Table Pagination
 
   console.log(
     "🚀 ~ file: ApplicationsPerformance.js ~ line 18 ~ ApplicationsPerformance ~ data",
@@ -78,14 +142,25 @@ export const ApplicationsPerformance = () => {
       <TopCharts data={data.slice(0, 4)} />
       <div>
         <TableContainer>
+          {/* Search */}
           <TableSearchContainer>
             <TableEntriesContainer>
               <span>Show</span>
-              <TableEntriesDropDown>
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
-                <option>100</option>
+              <TableEntriesDropDown
+                onChange={(e) => setTableRowsPerPage(Number(e.target.value))}
+              >
+                <option value="10" disabled={data.length < 10 ? true : false}>
+                  10
+                </option>
+                <option value="25" disabled={data.length < 25 ? true : false}>
+                  25
+                </option>
+                <option value="50" disabled={data.length < 50 ? true : false}>
+                  50
+                </option>
+                <option value="100" disabled={data.length < 100 ? true : false}>
+                  100
+                </option>
               </TableEntriesDropDown>
               <span>Entries</span>
             </TableEntriesContainer>
@@ -107,58 +182,120 @@ export const ApplicationsPerformance = () => {
               </TableButtonsContainer>
             </TableSearchInputContainer>
           </TableSearchContainer>
-          <Table>
-            <TableHead>
-              <TableHeadRow>{tableHeadeings}</TableHeadRow>
-            </TableHead>
-            <TableBody>
-              {data
-                .filter((term) => {
-                  if (searchTerm === "") {
-                    return term;
-                  } else if (
-                    term.processName
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                  ) {
-                    return term;
-                  }
-                  return 0;
-                })
-                .map((row, i) => {
-                  const ratio = row.failureCount / row.totalCount;
-                  const percentage = ratio * 100;
+          {/* Table */}
+          <TableAdjustHieghtContainer>
+            <Table>
+              <TableHead>
+                <TableHeadRow>{tableHeadeings}</TableHeadRow>
+              </TableHead>
+              <TableBody>
+                {currentPageRowsData
+                  .filter((term) => {
+                    if (searchTerm === "") {
+                      return term;
+                    } else if (
+                      term.processName
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
+                    ) {
+                      return term;
+                    }
+                    return 0;
+                  })
+                  .map((row, i) => {
+                    const ratio = row.failureCount / row.totalCount;
+                    const percentage = ratio * 100;
 
-                  return (
-                    <TableRow key={i}>
-                      <TableBodyCell>{row.processName}</TableBodyCell>
-                      <TableBodyCell>
-                        {(row.totalCount / 3).toFixed(2)}
-                      </TableBodyCell>
-                      <TableBodyCell>{`${percentage.toFixed(
-                        2
-                      )}%`}</TableBodyCell>
-                      <TableBodyCell>{row.computersCount}</TableBodyCell>
-                      <TableBodyCell>
-                        <i className="bx bxs-file-doc" />
-                      </TableBodyCell>
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
+                    return (
+                      <TableRow key={i}>
+                        <TableBodyCell>{row.processName}</TableBodyCell>
+                        <TableBodyCell>
+                          {(row.totalCount / 3).toFixed(2)}
+                        </TableBodyCell>
+                        <TableBodyCell>{`${percentage.toFixed(
+                          2
+                        )}%`}</TableBodyCell>
+                        <TableBodyCell>{row.computersCount}</TableBodyCell>
+                        <TableBodyCell>
+                          <i className="bx bxs-file-doc" />
+                        </TableBodyCell>
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableAdjustHieghtContainer>
+          {/* Pagination */}
+          <TablePaginationContaier>
+            <div>
+              Showing {totalRowsCount === 0 ? "0" : "1"} to{" "}
+              {displayNumberOfEntriesPerPage()} of {totalRowsCount} entries
+            </div>
+            <div>
+              <TablePaginationButton
+                onClick={() =>
+                  setCurrentPage(
+                    currentPage > 1 ? currentPage - 1 : currentPage
+                  )
+                }
+              >
+                Prev
+              </TablePaginationButton>
+              {currentPage > visibleCount - 2 && (
+                <TablePaginationButton
+                  onClick={() =>
+                    setCurrentPage(
+                      currentPage - visibleCount > 0
+                        ? currentPage - visibleCount
+                        : 1
+                    )
+                  }
+                >
+                  ...
+                </TablePaginationButton>
+              )}
+              {numberOfPages
+                .slice(getSliceStart(), getSliceEnd())
+                .map((number, i) => (
+                  <TablePaginationButton
+                    className={`${currentPage === number ? "active" : ""}`}
+                    onClick={() => setCurrentPage(number)}
+                  >
+                    {number}
+                  </TablePaginationButton>
+                ))}
+              {currentPage <
+                numberOfPages[numberOfPages.length - 1] -
+                  Math.floor(visibleCount / 2) && (
+                <TablePaginationButton
+                  onClick={() => {
+                    setCurrentPage(
+                      currentPage + visibleCount <= numberOfPages.length
+                        ? numberOfPages[currentPage + visibleCount - 1]
+                        : numberOfPages[numberOfPages.length - 1]
+                    );
+                  }}
+                >
+                  ...
+                </TablePaginationButton>
+              )}
+              <TablePaginationButton
+                onClick={() =>
+                  setCurrentPage(
+                    currentPage < numberOfPages.length
+                      ? currentPage + 1
+                      : currentPage
+                  )
+                }
+              >
+                Next
+              </TablePaginationButton>
+            </div>
+          </TablePaginationContaier>
         </TableContainer>
       </div>
-      {/*
-      <h1>
-      TODO: Applications Perfromance Table (Table): Download Excel & PDF
-      </h1>
-      <h1>
-      TODO: Applications Perfromance Table (Table): List TD(s) with details
-        col.
-        </h1>
-        <h1>TODO: Applications Perfromance Table (Table): pagination & Search</h1>
 
+      {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
       <h1>TODO: Applications Perfromance Devices Modal (Table)</h1>
       <h1>TODO: Applications Perfromance Failures Modal (Table)</h1> */}
