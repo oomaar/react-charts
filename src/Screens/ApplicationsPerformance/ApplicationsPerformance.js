@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import {
   PerformanceContainer,
-  TableContainer,
   Table,
   TableHead,
+  TableHeadRow,
   TableHeadCell,
   TableBody,
   TableRow,
   TableBodyCell,
+  TableContainer,
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
 // import useFetchData from "../../hooks/useFetchData";
@@ -52,7 +53,12 @@ export const ApplicationsPerformance = () => {
   ];
 
   const tableHeadeings = headings.map((heading, i) => (
-    <TableHeadCell key={i}>{heading}</TableHeadCell>
+    <TableHeadCell
+      key={i}
+      className={`${heading === "Details" ? "details" : ""}`}
+    >
+      {heading}
+    </TableHeadCell>
   ));
 
   return (
@@ -60,7 +66,9 @@ export const ApplicationsPerformance = () => {
       <TopCharts data={data.slice(0, 4)} />
       <TableContainer>
         <Table>
-          <TableHead>{tableHeadeings}</TableHead>
+          <TableHead>
+            <TableHeadRow>{tableHeadeings}</TableHeadRow>
+          </TableHead>
           <TableBody>
             {data.map((row, i) => {
               const ratio = row.failureCount / row.totalCount;
