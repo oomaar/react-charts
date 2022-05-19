@@ -25,12 +25,17 @@ import {
   TablePaginationContaier,
   TablePaginationButton,
   TableAdjustHieghtContainer,
+  ModalContainer,
+  ModalTitle,
+  ModalBackDrop,
+  ModalContentContainer,
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   // Table Search
   const [searchTerm, setSearchTerm] = useState("");
@@ -213,7 +218,10 @@ export const ApplicationsPerformance = () => {
                         )}%`}</TableBodyCell>
                         <TableBodyCell>{row.computersCount}</TableBodyCell>
                         <TableBodyCell>
-                          <i className="bx bxs-file-doc" />
+                          <i
+                            className="bx bxs-file-doc"
+                            onClick={() => setShowModal(true)}
+                          />
                         </TableBodyCell>
                       </TableRow>
                     );
@@ -291,6 +299,16 @@ export const ApplicationsPerformance = () => {
           </TablePaginationContaier>
         </TableContainer>
       </div>
+      {/* Modal */}
+      <ModalContainer showModal={showModal}>
+        <ModalBackDrop
+          showModal={showModal}
+          onClick={() => setShowModal(false)}
+        />
+        <ModalContentContainer>
+          <ModalTitle>Modal</ModalTitle>
+        </ModalContentContainer>
+      </ModalContainer>
 
       {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
