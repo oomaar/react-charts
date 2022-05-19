@@ -21,8 +21,24 @@ export const TableContainer = styled.div`
 
 export const TableAdjustHieghtContainer = styled.div`
   width: 100%;
-  max-height: 500vh;
-  height: 100%;
+  /* max-height: 1000vh;
+  min-height: 100vh;
+  height: 100%; */
+  height: ${(
+    // @ts-ignore
+    { displayNumberOfEntriesPerPage }
+  ) =>
+    displayNumberOfEntriesPerPage === 10
+      ? "100vh"
+      : displayNumberOfEntriesPerPage === 25
+      ? "230vh"
+      : displayNumberOfEntriesPerPage === 50
+      ? "500vh"
+      : displayNumberOfEntriesPerPage === 100
+      ? "1000vh"
+      : displayNumberOfEntriesPerPage < 10
+      ? "50vh"
+      : ""};
 `;
 
 export const Table = styled.table`

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
@@ -93,11 +94,6 @@ export const ApplicationsPerformance = () => {
   };
   // Table Pagination
 
-  console.log(
-    "🚀 ~ file: ApplicationsPerformance.js ~ line 18 ~ ApplicationsPerformance ~ data",
-    data
-  );
-
   const userToken = useAuth().user.token;
 
   useEffect(() => {
@@ -149,9 +145,7 @@ export const ApplicationsPerformance = () => {
               <TableEntriesDropDown
                 onChange={(e) => setTableRowsPerPage(Number(e.target.value))}
               >
-                <option value="10" disabled={data.length < 10 ? true : false}>
-                  10
-                </option>
+                <option value="10">10</option>
                 <option value="25" disabled={data.length < 25 ? true : false}>
                   25
                 </option>
@@ -183,7 +177,9 @@ export const ApplicationsPerformance = () => {
             </TableSearchInputContainer>
           </TableSearchContainer>
           {/* Table */}
-          <TableAdjustHieghtContainer>
+          <TableAdjustHieghtContainer
+            displayNumberOfEntriesPerPage={displayNumberOfEntriesPerPage}
+          >
             <Table>
               <TableHead>
                 <TableHeadRow>{tableHeadeings}</TableHeadRow>
@@ -258,6 +254,7 @@ export const ApplicationsPerformance = () => {
                 .slice(getSliceStart(), getSliceEnd())
                 .map((number, i) => (
                   <TablePaginationButton
+                    key={i}
                     className={`${currentPage === number ? "active" : ""}`}
                     onClick={() => setCurrentPage(number)}
                   >
