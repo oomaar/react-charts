@@ -11,12 +11,24 @@ import {
   TableRow,
   TableBodyCell,
   TableContainer,
+  // Search
+  TableSearchContainer,
+  TableEntriesContainer,
+  TableEntriesDropDown,
+  TableSearchInputContainer,
+  TableSearchInput,
+  TableButtonsContainer,
+  TableDownloadButton,
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
   const [data, setData] = useState([]);
+
+  // Table Search
+  const [searchTerm, setSearchTerm] = useState("");
+
   console.log(
     "🚀 ~ file: ApplicationsPerformance.js ~ line 18 ~ ApplicationsPerformance ~ data",
     data
@@ -64,42 +76,88 @@ export const ApplicationsPerformance = () => {
   return (
     <PerformanceContainer>
       <TopCharts data={data.slice(0, 4)} />
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableHeadRow>{tableHeadeings}</TableHeadRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row, i) => {
-              const ratio = row.failureCount / row.totalCount;
-              const percentage = ratio * 100;
+      <div>
+        <TableContainer>
+          <TableSearchContainer>
+            <TableEntriesContainer>
+              <span>Show</span>
+              <TableEntriesDropDown>
+                <option>10</option>
+                <option>25</option>
+                <option>50</option>
+                <option>100</option>
+              </TableEntriesDropDown>
+              <span>Entries</span>
+            </TableEntriesContainer>
+            <TableSearchInputContainer>
+              <label>Search: </label>
+              <TableSearchInput
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                type="text"
+                placeholder="Search Table"
+              />
+              <TableButtonsContainer>
+                <TableDownloadButton className="excel">
+                  <i className="bx bxl-microsoft-teams" /> Excel
+                </TableDownloadButton>
+                <TableDownloadButton className="pdf">
+                  <i className="bx bxs-file-pdf" /> PDF
+                </TableDownloadButton>
+              </TableButtonsContainer>
+            </TableSearchInputContainer>
+          </TableSearchContainer>
+          <Table>
+            <TableHead>
+              <TableHeadRow>{tableHeadeings}</TableHeadRow>
+            </TableHead>
+            <TableBody>
+              {data
+                .filter((term) => {
+                  if (searchTerm === "") {
+                    return term;
+                  } else if (
+                    term.processName
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase())
+                  ) {
+                    return term;
+                  }
+                  return 0;
+                })
+                .map((row, i) => {
+                  const ratio = row.failureCount / row.totalCount;
+                  const percentage = ratio * 100;
 
-              return (
-                <TableRow key={i}>
-                  <TableBodyCell>{row.processName}</TableBodyCell>
-                  <TableBodyCell>
-                    {(row.totalCount / 3).toFixed(2)}
-                  </TableBodyCell>
-                  <TableBodyCell>{`${percentage.toFixed(2)}%`}</TableBodyCell>
-                  <TableBodyCell>{row.computersCount}</TableBodyCell>
-                  <TableBodyCell>
-                    <i className="bx bxs-file-doc" />
-                  </TableBodyCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {/* <h1>TODO: Applications Perfromance Table (Table)</h1>
+                  return (
+                    <TableRow key={i}>
+                      <TableBodyCell>{row.processName}</TableBodyCell>
+                      <TableBodyCell>
+                        {(row.totalCount / 3).toFixed(2)}
+                      </TableBodyCell>
+                      <TableBodyCell>{`${percentage.toFixed(
+                        2
+                      )}%`}</TableBodyCell>
+                      <TableBodyCell>{row.computersCount}</TableBodyCell>
+                      <TableBodyCell>
+                        <i className="bx bxs-file-doc" />
+                      </TableBodyCell>
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      {/*
       <h1>
-        TODO: Applications Perfromance Table (Table): Download Excel & PDF
+      TODO: Applications Perfromance Table (Table): Download Excel & PDF
       </h1>
       <h1>
-        TODO: Applications Perfromance Table (Table): List TD(s) with details
+      TODO: Applications Perfromance Table (Table): List TD(s) with details
         col.
-      </h1>
-      <h1>TODO: Applications Perfromance Table (Table): pagination & Search</h1>
+        </h1>
+        <h1>TODO: Applications Perfromance Table (Table): pagination & Search</h1>
 
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
       <h1>TODO: Applications Perfromance Devices Modal (Table)</h1>
