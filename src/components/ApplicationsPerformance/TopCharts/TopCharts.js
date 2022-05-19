@@ -7,6 +7,7 @@ import {
   TopChartsInfo,
   TopChartsInfoContainer,
   TopChartsInfoTextContainer,
+  TopChartsParentContainer,
 } from "./styledTopCharts";
 
 export const TopCharts = ({ data }) => {
@@ -49,5 +50,9 @@ export const TopCharts = ({ data }) => {
     );
   });
 
-  return <TopChartsContainer>{chartsData}</TopChartsContainer>;
+  return (
+    <TopChartsParentContainer>
+      <TopChartsContainer>{chartsData}</TopChartsContainer>;
+    </TopChartsParentContainer>
+  );
 };

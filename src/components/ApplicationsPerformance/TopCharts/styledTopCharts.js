@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const TopChartsParentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const TopChartsBox = styled.div`
   background: linear-gradient(
     127.09deg,
