@@ -14,7 +14,7 @@ export const TableContainer = styled.div`
     rgba(40, 24, 45, 0.49) 69.65%
   );
   padding: 1rem;
-  margin: 2rem 0;
+  margin: 2rem auto;
   border-radius: 4rem;
   width: 95%;
 `;
