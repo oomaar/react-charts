@@ -203,7 +203,12 @@ export const ApplicationsPerformance = () => {
       <div>
         <TableContainer>
           {/* Search */}
-          <TableSearch />
+          <TableSearch
+            data={data}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setTableRowsPerPage={setTableRowsPerPage}
+          />
           {/* Table */}
           <TableAdjustHieghtContainer
             displayNumberOfEntriesPerPage={displayNumberOfEntriesPerPage}
