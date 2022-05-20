@@ -13,14 +13,6 @@ import {
   TableRow,
   TableBodyCell,
   TableContainer,
-  // Search
-  TableSearchContainer,
-  TableEntriesContainer,
-  TableEntriesDropDown,
-  TableSearchInputContainer,
-  TableSearchInput,
-  TableButtonsContainer,
-  TableDownloadButton,
   // Pagination
   TablePaginationContaier,
   TablePaginationButton,
@@ -33,6 +25,7 @@ import {
 import { TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { useSortableData } from "../../hooks/useSortedData";
+import { TableSearch } from "../../components/TableComponents/TableSearch/TableSearch";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
@@ -210,43 +203,7 @@ export const ApplicationsPerformance = () => {
       <div>
         <TableContainer>
           {/* Search */}
-          <TableSearchContainer>
-            <TableEntriesContainer>
-              <span>Show</span>
-              <TableEntriesDropDown
-                onChange={(e) => setTableRowsPerPage(Number(e.target.value))}
-              >
-                <option value="10">10</option>
-                <option value="25" disabled={data.length < 25 ? true : false}>
-                  25
-                </option>
-                <option value="50" disabled={data.length < 50 ? true : false}>
-                  50
-                </option>
-                <option value="100" disabled={data.length < 100 ? true : false}>
-                  100
-                </option>
-              </TableEntriesDropDown>
-              <span>Entries</span>
-            </TableEntriesContainer>
-            <TableSearchInputContainer>
-              <label>Search: </label>
-              <TableSearchInput
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                type="text"
-                placeholder="Search Table"
-              />
-              <TableButtonsContainer>
-                <TableDownloadButton className="excel">
-                  <i className="bx bxl-microsoft-teams" /> Excel
-                </TableDownloadButton>
-                <TableDownloadButton className="pdf">
-                  <i className="bx bxs-file-pdf" /> PDF
-                </TableDownloadButton>
-              </TableButtonsContainer>
-            </TableSearchInputContainer>
-          </TableSearchContainer>
+          <TableSearch />
           {/* Table */}
           <TableAdjustHieghtContainer
             displayNumberOfEntriesPerPage={displayNumberOfEntriesPerPage}
