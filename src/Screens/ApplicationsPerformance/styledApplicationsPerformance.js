@@ -60,9 +60,37 @@ export const TableHeadCell = styled.th`
   padding-bottom: 1rem;
   text-align: left;
   border-bottom: 1px solid #56577a;
+  position: relative;
 
   &.details {
     width: 60px;
+  }
+
+  ::before,
+  ::after {
+    position: absolute;
+    color: hsla(200, 100%, 100%, 0.6);
+    font-size: 1rem;
+  }
+
+  ::before {
+    content: "⌃";
+    top: 25%;
+    right: 3px;
+  }
+
+  ::after {
+    content: "⌄";
+    top: 30%;
+    right: 3px;
+  }
+
+  &.ascending::before {
+    color: hsla(235, 100%, 100%, 1);
+  }
+
+  &.descending::after {
+    color: hsla(235, 100%, 100%, 1);
   }
 `;
 
