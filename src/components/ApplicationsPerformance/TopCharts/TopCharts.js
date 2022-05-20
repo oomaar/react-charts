@@ -52,7 +52,7 @@ export const TopCharts = ({ data }) => {
 
   return (
     <TopChartsParentContainer>
-      <TopChartsContainer>{chartsData}</TopChartsContainer>;
+      <TopChartsContainer>{chartsData}</TopChartsContainer>
     </TopChartsParentContainer>
   );
 };
