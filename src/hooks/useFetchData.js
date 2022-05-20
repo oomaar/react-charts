@@ -18,10 +18,10 @@ function useFetchData(url) {
   // );
   const initialEndDate = DateTime.now().toJSDate();
   const initialEndDateFrom = DateTime.fromJSDate(initialEndDate);
-  console.log(
-    "🚀 ~ file: useFetchData.js ~ line 20 ~ useFetchData ~ initialEndDateFrom",
-    initialEndDateFrom
-  );
+  // console.log(
+  //   "🚀 ~ file: useFetchData.js ~ line 20 ~ useFetchData ~ initialEndDateFrom",
+  //   initialEndDateFrom
+  // );
 
   useEffect(() => {
     const fetchData = async () =>
