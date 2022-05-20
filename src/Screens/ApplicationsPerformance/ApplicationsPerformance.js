@@ -32,6 +32,7 @@ import {
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
+import { useSortableData } from "../../hooks/useSortedData";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
@@ -43,6 +44,61 @@ export const ApplicationsPerformance = () => {
   );
 
   const data = fetchedData.data;
+  const {
+    items: sortedSearchedRowsData,
+    requestSort,
+    sortConfig,
+  } = useSortableData(data);
+
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+  };
+
+  const columns = [
+    {
+      name: "Application Name",
+      attr: "processName",
+    },
+    {
+      name: "Duration (Minutes)",
+      attr: "totalCount",
+    },
+    {
+      name: "Failure Percentage",
+      attr: "percentage",
+    },
+    {
+      name: "Number of Devices",
+      attr: "computersCount",
+    },
+    {
+      name: "Details",
+      attr: "",
+    },
+  ];
+
+  const tableHeadings = columns.map((column, index) => {
+    return (
+      <TableHeadCell
+        key={index}
+        className={`${getClassNamesFor(column.attr)}`}
+        style={column.style}
+        onClick={
+          column.attr === ""
+            ? () => {}
+            : () => {
+                requestSort(column.attr);
+                console.log("I'm Clicked");
+              }
+        }
+      >
+        {column.name}
+      </TableHeadCell>
+    );
+  });
 
   // Table Search
   const [searchTerm, setSearchTerm] = useState("");
@@ -194,10 +250,10 @@ export const ApplicationsPerformance = () => {
           >
             <Table>
               <TableHead>
-                <TableHeadRow>{tableHeadeings}</TableHeadRow>
+                <TableHeadRow>{tableHeadings}</TableHeadRow>
               </TableHead>
               <TableBody>
-                {currentPageRowsData
+                {sortedSearchedRowsData
                   .filter((term) => {
                     if (searchTerm === "") {
                       return term;
