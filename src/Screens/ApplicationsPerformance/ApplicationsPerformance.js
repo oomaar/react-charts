@@ -31,11 +31,18 @@ import {
   ModalContentContainer,
 } from "./styledApplicationsPerformance";
 import { TopCharts } from "../../components";
+import useFetchData from "../../hooks/useFetchData";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
+
+  const fetchedData = useFetchData(
+    "https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance"
+  );
+
+  const data = fetchedData.data;
 
   // Table Search
   const [searchTerm, setSearchTerm] = useState("");
@@ -99,19 +106,19 @@ export const ApplicationsPerformance = () => {
   };
   // Table Pagination
 
-  const userToken = useAuth().user.token;
+  // const userToken = useAuth().user.token;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
-        { headers: { Authorization: `Bearer ${userToken}` } }
-      );
-      setData(response.data);
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get(
+  //       `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
+  //       { headers: { Authorization: `Bearer ${userToken}` } }
+  //     );
+  //     setData(response.data);
+  //   };
+  //   fetchData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   // const { data, error, loading } = useFetchData(
   //   "https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance"
