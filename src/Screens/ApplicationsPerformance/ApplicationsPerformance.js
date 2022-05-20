@@ -23,6 +23,7 @@ import { TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { useSortableData } from "../../hooks/useSortedData";
 import { TableSearch } from "../../components/TableComponents/TableSearch/TableSearch";
+import { TablePagination } from "../../components/TableComponents/TablePagination/TablePagination";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
@@ -224,6 +225,13 @@ export const ApplicationsPerformance = () => {
             </Table>
           </TableAdjustHieghtContainer>
           {/* Pagination */}
+          <TablePagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            displayNumberOfEntriesPerPage={displayNumberOfEntriesPerPage}
+            numberOfPages={numberOfPages}
+            totalRowsCount={totalRowsCount}
+          />
         </TableContainer>
       </div>
       {/* Modal */}
