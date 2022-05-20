@@ -13,9 +13,6 @@ import {
   TableRow,
   TableBodyCell,
   TableContainer,
-  // Pagination
-  TablePaginationContaier,
-  TablePaginationButton,
   TableAdjustHieghtContainer,
   ModalContainer,
   ModalTitle,
@@ -99,48 +96,16 @@ export const ApplicationsPerformance = () => {
   // Table Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [tableRowsPerPage, setTableRowsPerPage] = useState(10);
-  const visibleCount = 5;
   const indexOfLastPost = currentPage * tableRowsPerPage;
   const indexOfFirstPost = indexOfLastPost - tableRowsPerPage;
   const totalRowsCount = data.length;
-  const numberOfPages = range(
-    1,
-    Math.ceil(totalRowsCount / tableRowsPerPage) + 1
-  );
-
-  const getSliceStart = () => {
-    if (range(0, Math.ceil(visibleCount / 2)).includes(currentPage)) {
-      return numberOfPages[0] - 1;
-    } else if (
-      range(
-        numberOfPages.length - Math.floor(visibleCount / 2),
-        numberOfPages.length + 1
-      ).includes(currentPage)
-    ) {
-      return numberOfPages[numberOfPages.length - 1 - visibleCount];
-    } else {
-      return currentPage - Math.ceil(visibleCount / 2);
-    }
-  };
-
-  const getSliceEnd = () => {
-    if (
-      range(
-        numberOfPages.length - Math.floor(visibleCount / 2),
-        numberOfPages.length + 1
-      ).includes(currentPage)
-    ) {
-      return numberOfPages[numberOfPages.length - 1];
-    } else if (range(0, Math.ceil(visibleCount / 2)).includes(currentPage)) {
-      return visibleCount;
-    } else {
-      return currentPage + Math.floor(visibleCount / 2);
-    }
-  };
-
   const currentPageRowsData = sortedSearchedRowsData.slice(
     indexOfFirstPost,
     indexOfLastPost
+  );
+  const numberOfPages = range(
+    1,
+    Math.ceil(totalRowsCount / tableRowsPerPage) + 1
   );
 
   const displayNumberOfEntriesPerPage = () => {
@@ -156,6 +121,7 @@ export const ApplicationsPerformance = () => {
       return tableRowsPerPage;
     }
   };
+
   // Table Pagination
 
   // const userToken = useAuth().user.token;
@@ -258,73 +224,6 @@ export const ApplicationsPerformance = () => {
             </Table>
           </TableAdjustHieghtContainer>
           {/* Pagination */}
-          <TablePaginationContaier>
-            <div>
-              Showing {totalRowsCount === 0 ? "0" : "1"} to{" "}
-              {displayNumberOfEntriesPerPage()} of {totalRowsCount} entries
-            </div>
-            <div>
-              <TablePaginationButton
-                onClick={() =>
-                  setCurrentPage(
-                    currentPage > 1 ? currentPage - 1 : currentPage
-                  )
-                }
-              >
-                Prev
-              </TablePaginationButton>
-              {currentPage > visibleCount - 2 && (
-                <TablePaginationButton
-                  onClick={() =>
-                    setCurrentPage(
-                      currentPage - visibleCount > 0
-                        ? currentPage - visibleCount
-                        : 1
-                    )
-                  }
-                >
-                  ...
-                </TablePaginationButton>
-              )}
-              {numberOfPages
-                .slice(getSliceStart(), getSliceEnd())
-                .map((number, i) => (
-                  <TablePaginationButton
-                    key={i}
-                    className={`${currentPage === number ? "active" : ""}`}
-                    onClick={() => setCurrentPage(number)}
-                  >
-                    {number}
-                  </TablePaginationButton>
-                ))}
-              {currentPage <
-                numberOfPages[numberOfPages.length - 1] -
-                  Math.floor(visibleCount / 2) && (
-                <TablePaginationButton
-                  onClick={() => {
-                    setCurrentPage(
-                      currentPage + visibleCount <= numberOfPages.length
-                        ? numberOfPages[currentPage + visibleCount - 1]
-                        : numberOfPages[numberOfPages.length - 1]
-                    );
-                  }}
-                >
-                  ...
-                </TablePaginationButton>
-              )}
-              <TablePaginationButton
-                onClick={() =>
-                  setCurrentPage(
-                    currentPage < numberOfPages.length
-                      ? currentPage + 1
-                      : currentPage
-                  )
-                }
-              >
-                Next
-              </TablePaginationButton>
-            </div>
-          </TablePaginationContaier>
         </TableContainer>
       </div>
       {/* Modal */}
