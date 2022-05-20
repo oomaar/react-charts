@@ -145,7 +145,10 @@ export const ApplicationsPerformance = () => {
     }
   };
 
-  const currentPageRowsData = data.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPageRowsData = sortedSearchedRowsData.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
 
   const displayNumberOfEntriesPerPage = () => {
     if (currentPage === numberOfPages.length) {
@@ -253,7 +256,7 @@ export const ApplicationsPerformance = () => {
                 <TableHeadRow>{tableHeadings}</TableHeadRow>
               </TableHead>
               <TableBody>
-                {sortedSearchedRowsData
+                {currentPageRowsData
                   .filter((term) => {
                     if (searchTerm === "") {
                       return term;
