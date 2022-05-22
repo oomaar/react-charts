@@ -1,7 +1,15 @@
-import { ModalContainer } from "./styledModal"
+import { ModalBackDrop, ModalContainer, ModalContentContainer, ModalTitle } from "./styledModal"
 
-export const Modal = () => {
+export const Modal = ({ showModal, setShowModal }) => {
     return (
-        <ModalContainer>Modal</ModalContainer>
+        <ModalContainer showModal={showModal}>
+            <ModalBackDrop
+                showModal={showModal}
+                onClick={() => setShowModal(false)}
+            />
+            <ModalContentContainer>
+                <ModalTitle>Modal</ModalTitle>
+            </ModalContentContainer>
+        </ModalContainer>
     )
 }
