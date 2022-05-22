@@ -16,39 +16,30 @@ export const TableContainer = styled.div`
   width: 95%;
 `;
 
-export const TableAdjustHieghtContainer = styled.div`
-  width: 100%;
-  /* max-height: 1000vh;
-  min-height: 100vh;
-  height: 100%; */
-  height: ${(
-    // @ts-ignore
-    { displayNumberOfEntriesPerPage }
-  ) =>
-    displayNumberOfEntriesPerPage === 10
-      ? "100vh"
-      : displayNumberOfEntriesPerPage === 25
-      ? "230vh"
-      : displayNumberOfEntriesPerPage === 50
-      ? "500vh"
-      : displayNumberOfEntriesPerPage === 100
-      ? "1000vh"
-      : displayNumberOfEntriesPerPage < 10
-      ? "50vh"
-      : ""};
-`;
-
 export const TableTable = styled.table`
   margin: 2rem 0;
   width: 100%;
   padding: 1rem;
+  height: ${(
+  // @ts-ignore
+  { displayNumberOfEntriesPerPage }
+) =>
+    displayNumberOfEntriesPerPage === 10
+      ? "100vh"
+      : displayNumberOfEntriesPerPage === 25
+        ? "235vh"
+        : displayNumberOfEntriesPerPage === 50
+          ? "435vh"
+          : displayNumberOfEntriesPerPage === 100
+            ? "1010vh"
+            : displayNumberOfEntriesPerPage < 10
+              ? "40vh"
+              : ""};
 `;
 
 export const TableHead = styled.thead`
   color: #fff;
 `;
-
-export const TableHeadRow = styled.tr``;
 
 export const TableHeadCell = styled.th`
   width: 200px;
@@ -90,10 +81,6 @@ export const TableHeadCell = styled.th`
     color: hsla(235, 100%, 100%, 1);
   }
 `;
-
-export const TableBody = styled.tbody``;
-
-export const TableRow = styled.tr``;
 
 export const TableBodyCell = styled.td`
   padding: 1rem 0;

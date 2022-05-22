@@ -5,7 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 import { range } from "lodash";
 import {
   PerformanceContainer,
-  TableHeadCell,
   ModalContainer,
   ModalTitle,
   ModalBackDrop,
@@ -17,7 +16,7 @@ import { useSortableData } from "../../hooks/useSortedData";
 import { TableSearch } from "../../components/TableComponents/TableSearch/TableSearch";
 import { TablePagination } from "../../components/TableComponents/TablePagination/TablePagination";
 import { Table } from "../../components";
-import { TableBodyCell, TableRow } from "../../components/TableComponents/Table/styledTable";
+import { TableBodyCell } from "../../components/TableComponents/Table/styledTable";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
@@ -113,7 +112,7 @@ export const ApplicationsPerformance = () => {
     }));
 
     return sortingArray.map((application, index) => (
-      <TableRow key={index}>
+      <tr key={index}>
         <TableBodyCell>{application.processName}</TableBodyCell>
         <TableBodyCell>
           {(application.totalCount / 3).toFixed(2)}
@@ -126,7 +125,7 @@ export const ApplicationsPerformance = () => {
             onClick={() => setShowModal(true)}
           />
         </TableBodyCell>
-      </TableRow>
+      </tr>
     ));
   };
 
