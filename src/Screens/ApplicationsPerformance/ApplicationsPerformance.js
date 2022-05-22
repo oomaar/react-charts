@@ -17,6 +17,7 @@ import { useSortableData } from "../../hooks/useSortedData";
 import { TableSearch } from "../../components/TableComponents/TableSearch/TableSearch";
 import { TablePagination } from "../../components/TableComponents/TablePagination/TablePagination";
 import { Table } from "../../components";
+import { TableBodyCell, TableRow } from "../../components/TableComponents/Table/styledTable";
 // import useFetchData from "../../hooks/useFetchData";
 
 export const ApplicationsPerformance = () => {
@@ -74,10 +75,54 @@ export const ApplicationsPerformance = () => {
     },
   ];
 
+  // const rows = data.map((row, i) => {
+  //   const ratio = row.failureCount / row.totalCount;
+  //   const percentage = ratio * 100;
+
+  //   return (
+  //     <TableRow key={i}>
+  //       <TableBodyCell>{row.processName}</TableBodyCell>
+  //       <TableBodyCell>
+  //         {(row.totalCount / 3).toFixed(2)}
+  //       </TableBodyCell>
+  //       <TableBodyCell>{`${percentage.toFixed(2)}%`}</TableBodyCell>
+  //       <TableBodyCell>{row.computersCount}</TableBodyCell>
+  //       <TableBodyCell>
+  //         <i
+  //           className="bx bxs-file-doc"
+  //           onClick={() => setShowModal(true)}
+  //         />
+  //       </TableBodyCell>
+  //     </TableRow>
+  //   )
+  // });
+
+  const rows = (array) => {
+    return array.map((application, index) => {
+      const ratio = application.failureCount / application.totalCount;
+      const percentage = ratio * 100;
+
+      return <TableRow key={index}>
+        <TableBodyCell>{application.processName}</TableBodyCell>
+        <TableBodyCell>
+          {(application.totalCount / 3).toFixed(2)}
+        </TableBodyCell>
+        <TableBodyCell>{`${percentage.toFixed(2)}%`}</TableBodyCell>
+        <TableBodyCell>{application.computersCount}</TableBodyCell>
+        <TableBodyCell>
+          <i
+            className="bx bxs-file-doc"
+            onClick={() => setShowModal(true)}
+          />
+        </TableBodyCell>
+      </TableRow>
+    });
+  };
+
   return (
     <PerformanceContainer>
       <TopCharts data={data.slice(0, 4)} />
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rows={rows} />
       {/* Modal */}
       <ModalContainer showModal={showModal}>
         <ModalBackDrop

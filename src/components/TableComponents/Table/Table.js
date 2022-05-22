@@ -14,17 +14,14 @@ import {
   TableTable,
 } from "./styledTable";
 
-export const Table = ({ data, columns }) => {
+export const Table = ({ data, columns, rows }) => {
   const {
     items: sortedSearchedRowsData,
     requestSort,
     sortConfig,
   } = useSortableData(data);
 
-  // Table Search
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Table Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [tableRowsPerPage, setTableRowsPerPage] = useState(10);
   const indexOfLastPost = currentPage * tableRowsPerPage;
@@ -52,7 +49,6 @@ export const Table = ({ data, columns }) => {
       return tableRowsPerPage;
     }
   };
-  // Table Pagination
 
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -65,17 +61,15 @@ export const Table = ({ data, columns }) => {
     return (
       <TableHeadCell
         key={index}
-        className={`${
-          column.name === "Details" ? "details" : ""
-        } ${getClassNamesFor(column.attr)}`}
+        className={`${column.name === "Details" ? "details" : ""
+          } ${getClassNamesFor(column.attr)}`}
         style={column.style}
         onClick={
           column.attr === ""
-            ? () => {}
+            ? () => { }
             : () => {
-                requestSort(column.attr);
-                console.log("I'm Clicked");
-              }
+              requestSort(column.attr);
+            }
         }
       >
         {column.name}
@@ -112,27 +106,7 @@ export const Table = ({ data, columns }) => {
             <TableHeadRow>{tableHeadings}</TableHeadRow>
           </TableHead>
           <TableBody>
-            {serchedTableData.map((row, i) => {
-              const ratio = row.failureCount / row.totalCount;
-              const percentage = ratio * 100;
-
-              return (
-                <TableRow key={i}>
-                  <TableBodyCell>{row.processName}</TableBodyCell>
-                  <TableBodyCell>
-                    {(row.totalCount / 3).toFixed(2)}
-                  </TableBodyCell>
-                  <TableBodyCell>{`${percentage.toFixed(2)}%`}</TableBodyCell>
-                  <TableBodyCell>{row.computersCount}</TableBodyCell>
-                  <TableBodyCell>
-                    <i
-                      className="bx bxs-file-doc"
-                      // onClick={() => setShowModal(true)}
-                    />
-                  </TableBodyCell>
-                </TableRow>
-              );
-            })}
+            {rows(serchedTableData)}
           </TableBody>
         </TableTable>
       </TableAdjustHieghtContainer>
