@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const PerformanceContainer = styled.div``;
 
-// <Table />
-
 // Modal
 export const ModalContainer = styled.div`
   display: flex;
@@ -14,9 +12,9 @@ export const ModalContainer = styled.div`
   z-index: 9999;
   transition: all 0.5s ease-in;
   transform: ${(
-    // @ts-ignore
-    { showModal }
-  ) => (showModal ? "translateY(0)" : "translateY(-500vh)")};
+  // @ts-ignore
+  { showModal }
+) => (showModal ? "translateY(0)" : "translateY(-500vh)")};
 `;
 
 export const ModalBackDrop = styled.div`
@@ -26,9 +24,9 @@ export const ModalBackDrop = styled.div`
   position: fixed;
   inset: 0;
   transform: ${(
-    // @ts-ignore
-    { showModal }
-  ) => (showModal ? "scale(1)" : "scale(0)")};
+  // @ts-ignore
+  { showModal }
+) => (showModal ? "scale(1)" : "scale(0)")};
 `;
 
 export const ModalContentContainer = styled.div`
