@@ -14,7 +14,7 @@ import {
   TableTable,
 } from "./styledTable";
 
-export const Table = ({ data, columns, rows }) => {
+export const Table = ({ data, columns, rows, rowStrings }) => {
   const {
     items: sortedSearchedRowsData,
     requestSort,
@@ -77,16 +77,26 @@ export const Table = ({ data, columns, rows }) => {
     );
   });
 
-  const serchedTableData = currentPageRowsData.filter((term) => {
+  // const serchedTableData = currentPageRowsData.filter((term) => {
+  //   if (searchTerm === "") {
+  //     return term;
+  //   } else if (
+  //     term.processName.toLowerCase().includes(searchTerm.toLowerCase())
+  //   ) {
+  //     return term;
+  //   }
+  //   return 0;
+  // });
+
+  const serchedTableData = currentPageRowsData.filter((row, rowIndex) => {
     if (searchTerm === "") {
-      return term;
-    } else if (
-      term.processName.toLowerCase().includes(searchTerm.toLowerCase())
-    ) {
-      return term;
+      return true;
+    } else {
+      return rowStrings[rowIndex].some((rowString) =>
+        rowString.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
-    return 0;
-  });
+  })
 
   return (
     <TableContainer>

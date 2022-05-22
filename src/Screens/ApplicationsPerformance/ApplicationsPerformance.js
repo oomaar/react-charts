@@ -63,7 +63,7 @@ export const ApplicationsPerformance = () => {
     },
     {
       name: "Failure Percentage",
-      attr: "percentage",
+      attr: "failureCount",
     },
     {
       name: "Number of Devices",
@@ -97,17 +97,28 @@ export const ApplicationsPerformance = () => {
   //   )
   // });
 
-  const rows = (array) => {
-    return array.map((application, index) => {
-      const ratio = application.failureCount / application.totalCount;
-      const percentage = ratio * 100;
+  function calculatePercentage(process) {
+    const ratio = process.failureCount / process.totalCount;
+    const percentage = ratio * 100;
 
-      return <TableRow key={index}>
+    return Math.round((percentage + Number.EPSILON) * 1000) / 1000;
+  }
+
+  const rows = (array) => {
+    const sortingArray = array.map(el => ({
+      processName: el.processName,
+      totalCount: el.totalCount,
+      failPercentage: calculatePercentage(el),
+      computersCount: el.computersCount,
+    }));
+
+    return sortingArray.map((application, index) => (
+      <TableRow key={index}>
         <TableBodyCell>{application.processName}</TableBodyCell>
         <TableBodyCell>
           {(application.totalCount / 3).toFixed(2)}
         </TableBodyCell>
-        <TableBodyCell>{`${percentage.toFixed(2)}%`}</TableBodyCell>
+        <TableBodyCell>{`${application.failPercentage}%`}</TableBodyCell>
         <TableBodyCell>{application.computersCount}</TableBodyCell>
         <TableBodyCell>
           <i
@@ -116,13 +127,17 @@ export const ApplicationsPerformance = () => {
           />
         </TableBodyCell>
       </TableRow>
-    });
+    ));
   };
+
+  const rowStrings = data.map((application) => [
+    application.processName,
+  ]);
 
   return (
     <PerformanceContainer>
       <TopCharts data={data.slice(0, 4)} />
-      <Table columns={columns} data={data} rows={rows} />
+      <Table columns={columns} data={data} rows={rows} rowStrings={rowStrings} />
       {/* Modal */}
       <ModalContainer showModal={showModal}>
         <ModalBackDrop
