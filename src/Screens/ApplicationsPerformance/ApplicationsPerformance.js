@@ -2,12 +2,8 @@
 import { useState } from "react";
 import {
   PerformanceContainer,
-  ModalContainer,
-  ModalTitle,
-  ModalBackDrop,
-  ModalContentContainer,
 } from "./styledApplicationsPerformance";
-import { TopCharts } from "../../components";
+import { Modal, TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { Table } from "../../components";
 import { TableBodyCell } from "../../components/TableComponents/Table/styledTable";
@@ -84,16 +80,8 @@ export const ApplicationsPerformance = () => {
     <PerformanceContainer>
       <TopCharts data={data.slice(0, 4)} />
       <Table columns={columns} data={data} rows={rows} rowStrings={rowStrings} />
-      {/* Modal */}
-      <ModalContainer showModal={showModal}>
-        <ModalBackDrop
-          showModal={showModal}
-          onClick={() => setShowModal(false)}
-        />
-        <ModalContentContainer>
-          <ModalTitle>Modal</ModalTitle>
-        </ModalContentContainer>
-      </ModalContainer>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
+
 
       {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
