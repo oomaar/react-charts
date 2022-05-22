@@ -38,20 +38,20 @@ export const TableTable = styled.table`
 `;
 
 export const TableHead = styled.thead`
-  color: #fff;
+  color: hsla(200, 100%, 100%, 0.6);
 `;
 
 export const TableHeadCell = styled.th`
   width: 200px;
   margin: 0;
-  padding: 0;
-  padding-bottom: 1rem;
+  padding: 0 0 1rem 0.3rem;
   text-align: left;
   border-bottom: 1px solid #56577a;
   position: relative;
+  cursor: pointer;
 
   &.details {
-    width: 60px;
+    width: 80px;
   }
 
   ::before,
@@ -63,14 +63,14 @@ export const TableHeadCell = styled.th`
 
   ::before {
     content: "⌃";
-    top: 25%;
-    right: 3px;
+    top: 0;
+    right: 8px;
   }
 
   ::after {
     content: "⌄";
-    top: 30%;
-    right: 3px;
+    top: 10%;
+    right: 8px;
   }
 
   &.ascending::before {
