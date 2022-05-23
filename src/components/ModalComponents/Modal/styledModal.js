@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalContainer = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
   transform: ${(
     // @ts-ignore
     { showModal }
-) => (showModal ? "translateY(0)" : "translateY(-500vh)")};
+  ) => (showModal ? "translateY(0)" : "translateY(-500vh)")};
 `;
 
 export const ModalBackDrop = styled.div`
@@ -23,19 +23,28 @@ export const ModalBackDrop = styled.div`
   transform: ${(
     // @ts-ignore
     { showModal }
-) => (showModal ? "scale(1)" : "scale(0)")};
+  ) => (showModal ? "scale(1)" : "scale(0)")};
 `;
 
 export const ModalContentContainer = styled.div`
   position: relative;
   width: 50%;
   height: 50%;
-  background: #002200;
+  background: linear-gradient(
+    126.97deg,
+    #06092c 28.26%,
+    rgba(12, 3, 50, 1) 91.2%
+  );
   border-radius: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 99999;
 `;
 
+export const ModalHeader = styled.div``;
+
 export const ModalTitle = styled.h1``;
+
+export const ModalBody = styled.div``;

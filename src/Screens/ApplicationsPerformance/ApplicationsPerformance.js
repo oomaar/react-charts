@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState } from "react";
-import {
-  PerformanceContainer,
-} from "./styledApplicationsPerformance";
+import { PerformanceContainer } from "./styledApplicationsPerformance";
 import { Modal, TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { Table } from "../../components";
@@ -10,6 +8,7 @@ import { TableBodyCell } from "../../components/TableComponents/Table/styledTabl
 
 export const ApplicationsPerformance = () => {
   const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
 
   const fetchedData = useFetchData(
     "https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance"
@@ -47,7 +46,7 @@ export const ApplicationsPerformance = () => {
   }
 
   const rows = (array) => {
-    const sortingArray = array.map(el => ({
+    const sortingArray = array.map((el) => ({
       processName: el.processName,
       totalCount: el.totalCount,
       failPercentage: calculatePercentage(el),
@@ -57,31 +56,38 @@ export const ApplicationsPerformance = () => {
     return sortingArray.map((application, index) => (
       <tr key={index}>
         <TableBodyCell>{application.processName}</TableBodyCell>
-        <TableBodyCell>
-          {(application.totalCount / 3).toFixed(2)}
-        </TableBodyCell>
+        <TableBodyCell>{(application.totalCount / 3).toFixed(2)}</TableBodyCell>
         <TableBodyCell>{`${application.failPercentage}%`}</TableBodyCell>
         <TableBodyCell>{application.computersCount}</TableBodyCell>
         <TableBodyCell>
           <i
             className="bx bxs-file-doc"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              setShowModal(true);
+              setModalTitle(application.processName);
+            }}
           />
         </TableBodyCell>
       </tr>
     ));
   };
 
-  const rowStrings = data.map((application) => [
-    application.processName,
-  ]);
+  const rowStrings = data.map((application) => [application.processName]);
 
   return (
     <PerformanceContainer>
       <TopCharts data={data.slice(0, 4)} />
-      <Table columns={columns} data={data} rows={rows} rowStrings={rowStrings} />
-      <Modal showModal={showModal} setShowModal={setShowModal} />
-
+      <Table
+        columns={columns}
+        data={data}
+        rows={rows}
+        rowStrings={rowStrings}
+      />
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalTitle={modalTitle}
+      />
 
       {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
