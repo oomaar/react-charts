@@ -28,8 +28,6 @@ export const ModalBackDrop = styled.div`
 
 export const ModalContentContainer = styled.div`
   position: relative;
-  width: 50%;
-  height: 50%;
   background: linear-gradient(
     126.97deg,
     #06092c 28.26%,
@@ -48,3 +46,27 @@ export const ModalHeader = styled.div``;
 export const ModalTitle = styled.h1``;
 
 export const ModalBody = styled.div``;
+
+export const ModalNav = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1.5rem;
+`;
+
+export const ModalNavButton = styled.button`
+  border: 1px solid #e0e0e0;
+  background: transparent;
+  border-radius: 0.5rem;
+  outline: 0;
+  color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  transition: all 0.3s ease-in;
+
+  :hover {
+    color: #000;
+    background: #e0e0e0;
+    border: 1px solid transparent;
+  }
+`;
