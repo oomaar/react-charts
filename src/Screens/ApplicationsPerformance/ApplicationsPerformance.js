@@ -83,11 +83,11 @@ export const ApplicationsPerformance = () => {
         rows={rows}
         rowStrings={rowStrings}
       />
-      <Modal
+     {/* <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         modalTitle={modalTitle}
-      />
+      /> */}
 
       {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
