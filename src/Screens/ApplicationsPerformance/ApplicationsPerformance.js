@@ -1,18 +1,18 @@
 // @ts-nocheck
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PerformanceContainer } from "./styledApplicationsPerformance";
 import { Modal, TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { Table } from "../../components";
 import { TableBodyCell } from "../../components/TableComponents/Table/styledTable";
+import AuthedClient from "../../client/AuthedClient";
 
 export const ApplicationsPerformance = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
+  const authedClient = new AuthedClient();
 
-  const fetchedData = useFetchData(
-    "https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance"
-  );
+  const fetchedData = useFetchData(authedClient.getProcessPerformance());
   const data = fetchedData.data;
 
   const columns = [
@@ -83,7 +83,7 @@ export const ApplicationsPerformance = () => {
         rows={rows}
         rowStrings={rowStrings}
       />
-     {/* <Modal
+      {/* <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         modalTitle={modalTitle}
