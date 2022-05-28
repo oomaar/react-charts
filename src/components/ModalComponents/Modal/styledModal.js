@@ -45,7 +45,9 @@ export const ModalHeader = styled.div``;
 
 export const ModalTitle = styled.h1``;
 
-export const ModalBody = styled.div``;
+export const ModalBody = styled.div`
+  width: 1000px;
+`;
 
 export const ModalNav = styled.div`
   display: flex;
