@@ -5,12 +5,13 @@ function useFetchData(dataMethod) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () =>
+    const fetchData = async () => {
+      setLoading(true);
       await dataMethod.then((res) => {
-        setLoading(true);
         setData(res);
-        setLoading(false);
       });
+      setLoading(false);
+    };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
