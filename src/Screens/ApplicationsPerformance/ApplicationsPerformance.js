@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
 import { PerformanceContainer } from "./styledApplicationsPerformance";
-import { Modal, TopCharts } from "../../components";
+import { Modal, PageHeader, TopCharts } from "../../components";
 import useFetchData from "../../hooks/useFetchData";
 import { Table } from "../../components";
 import { TableBodyCell } from "../../components/TableComponents/Table/styledTable";
@@ -76,24 +76,27 @@ export const ApplicationsPerformance = () => {
   const rowStrings = data.map((application) => [application.processName]);
 
   return (
-    <PerformanceContainer>
-      <TopCharts data={data.slice(0, 4)} />
-      <Table
-        columns={columns}
-        data={data}
-        rows={rows}
-        rowStrings={rowStrings}
-      />
-      {/* <Modal
+    <>
+      <PageHeader title="Applications Performance" />
+      <PerformanceContainer>
+        <TopCharts data={data.slice(0, 4)} />
+        <Table
+          columns={columns}
+          data={data}
+          rows={rows}
+          rowStrings={rowStrings}
+        />
+        {/* <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         modalTitle={modalTitle}
       /> */}
 
-      {/*
+        {/*
       <h1>TODO: Applications Perfromance Modal (Tabbed Container)</h1>
       <h1>TODO: Applications Perfromance Devices Modal (Table)</h1>
-      <h1>TODO: Applications Perfromance Failures Modal (Table)</h1> */}
-    </PerformanceContainer>
+    <h1>TODO: Applications Perfromance Failures Modal (Table)</h1> */}
+      </PerformanceContainer>
+    </>
   );
 };
