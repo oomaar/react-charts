@@ -50,4 +50,13 @@ export default class AuthedClient {
 
     return response.data;
   }
+
+  async getAllUsers() {
+    const response = await axios.get(
+      `https://flyworex.azurewebsites.net/api/User/GetUsersSummary`,
+      { headers: { Authorization: `Bearer ${this.userToken}` } }
+    );
+
+    return response.data;
+  }
 }
