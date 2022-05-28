@@ -51,7 +51,7 @@ export const PageHeader = ({ title }) => {
         <UserFilterContainer>
           <span onClick={() => setUserList((state) => !state)}>
             <i className="bx bxs-user" /> {userFilterValue}{" "}
-            <i userList={userList} className="bx bx-chevron-down" />
+            <i userlist={userList.toString()} className="bx bx-chevron-down" />
           </span>
           <UserFilterList userList={userList}>
             <div>
