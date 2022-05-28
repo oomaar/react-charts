@@ -44,12 +44,7 @@ export default class AuthedClient {
 
   async getProcessPerformance(startDate, endData, user, group) {
     const response = await axios.get(
-      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance${this.buildFiltersQueryParam(
-        startDate,
-        endData,
-        user,
-        group
-      )}`,
+      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
       { headers: { Authorization: `Bearer ${this.userToken}` } }
     );
 
