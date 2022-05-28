@@ -42,6 +42,17 @@ export default class AuthedClient {
     return queryParam;
   }
 
+  // Filters
+  async getAllUsers() {
+    const response = await axios.get(
+      `https://flyworex.azurewebsites.net/api/User/GetUsersSummary`,
+      { headers: { Authorization: `Bearer ${this.userToken}` } }
+    );
+
+    return response.data;
+  }
+
+  // Applications Performance
   async getProcessPerformance(startDate, endData, user, group) {
     const response = await axios.get(
       `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
@@ -51,9 +62,18 @@ export default class AuthedClient {
     return response.data;
   }
 
-  async getAllUsers() {
+  async getFaliuresPerformance(title) {
     const response = await axios.get(
-      `https://flyworex.azurewebsites.net/api/User/GetUsersSummary`,
+      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessFailureRecords?ProcessName=${title}`,
+      { headers: { Authorization: `Bearer ${this.userToken}` } }
+    );
+
+    return response.data;
+  }
+
+  async getDevicesPerformance(title) {
+    const response = await axios.get(
+      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessDevicesList?ProcessName=${title}`,
       { headers: { Authorization: `Bearer ${this.userToken}` } }
     );
 
