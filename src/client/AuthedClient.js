@@ -1,4 +1,5 @@
 import axios from "axios";
+import { DateTime } from "luxon";
 import { useAuth } from "../context/AuthContext";
 
 export default class AuthedClient {
@@ -25,9 +26,31 @@ export default class AuthedClient {
     );
   }
 
-  async getProcessPerformance() {
+  buildFiltersQueryParam(fromDate, toDate, group, user) {
+    const from = fromDate.toISODate();
+    const to = toDate.toISODate();
+
+    let queryParam = `?from=${from}&to=${to}`;
+
+    if (group !== 0) {
+      queryParam = queryParam + `&groupId=${group}`;
+    }
+
+    if (user !== undefined) {
+      queryParam = queryParam + `&computerId=${user}`;
+    }
+
+    return queryParam;
+  }
+
+  async getProcessPerformance(startDate, endData, user, group) {
     const response = await axios.get(
-      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance`,
+      `https://flyworex.azurewebsites.net/api/ProcessesPerformance/GetProcessesPerformance${this.buildFiltersQueryParam(
+        startDate,
+        endData,
+        user,
+        group
+      )}`,
       { headers: { Authorization: `Bearer ${this.userToken}` } }
     );
 
