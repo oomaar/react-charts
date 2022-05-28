@@ -1,5 +1,4 @@
 import axios from "axios";
-import { DateTime } from "luxon";
 import { useAuth } from "../context/AuthContext";
 
 export default class AuthedClient {
