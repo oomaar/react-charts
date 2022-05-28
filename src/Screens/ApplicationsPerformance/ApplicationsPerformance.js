@@ -6,11 +6,12 @@ import useFetchData from "../../hooks/useFetchData";
 import { Table } from "../../components";
 import { TableBodyCell } from "../../components/TableComponents/Table/styledTable";
 import AuthedClient from "../../client/AuthedClient";
+import { useAuthedClient } from "../../context/AuthedClientContext";
 
 export const ApplicationsPerformance = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const authedClient = new AuthedClient();
+  const authedClient = useAuthedClient();
 
   const fetchedData = useFetchData(authedClient.getProcessPerformance());
   const data = fetchedData.data;
