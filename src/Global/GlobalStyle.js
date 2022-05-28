@@ -63,4 +63,20 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: #fff;
   }
+
+    /* Scroll Bar */
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+    border-radius: 0.5rem;
+    background-color: hsl(219, 8%, 38%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(219, 8%, 26%);
+    border-radius: 0.5rem;
+    
+    :hover {
+      background-color: hsl(219, 8%, 20%);
+    }
+  }
 `;
