@@ -11,7 +11,13 @@ import {
 } from "./styledTopCharts";
 
 export const TopCharts = ({ data }) => {
-  const chartsData = data.map((chart, index) => {
+  const chartsData = data
+  .filter(filter => {
+    if ((filter.successCout / filter.totalCount) * 100 !== "0.0") {
+      return filter;
+    }
+  })
+  .map((chart, index) => {
     const percentage = Number(
       ((chart.successCount / chart.totalCount) * 100).toFixed(1)
     );
